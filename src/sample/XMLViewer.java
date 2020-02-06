@@ -4,6 +4,7 @@ import java.io.File;
 
 import javafx.application.Application;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -53,6 +54,8 @@ public class XMLViewer extends Application
 
         TreeItem<String> fileItem = fileHelper.getTreeRootItem();
 
+        int subdivNum = fileHelper.getSubdivNum();
+
 
 
 
@@ -65,7 +68,7 @@ public class XMLViewer extends Application
 //            TreeItem<String> item = new TreeItem<String> ("Message" + i);
 //            rootItem.getChildren().add(item);
 //        }
-        
+
         treeView.setEditable(false);
         // Set a cell factory to use TextFieldTreeCell
         treeView.setCellFactory(TextFieldTreeCell.forTreeView());
@@ -103,17 +106,39 @@ public class XMLViewer extends Application
         HBox menu = new HBox();
         menu.getChildren().addAll(new Label("File"));
 
+        MenuBar mnuMain = new MenuBar();
+
+        Menu mnuFile = new Menu("_File");
+        Menu mnuHelp = new Menu("_Help");
+        mnuMain.getMenus().addAll(mnuFile, mnuHelp);
+
+        MenuItem mnuFileOpen = new MenuItem("_Open");
+        MenuItem mnuFileClose = new MenuItem("_Close");
+        MenuItem mnuFilePrint = new MenuItem("_Print");
+        MenuItem mnuFileExit = new MenuItem("E_xit");
+        mnuFile.getItems().addAll(mnuFileOpen, mnuFileClose,
+                mnuFilePrint, mnuFileExit);
+
+        mnuFileExit.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                System.exit(0);
+            }
+        });
+
+
         HBox footer = new HBox();
         footer.setSpacing(10);
-        footer.getChildren().addAll(new Label("Number of Subdivisions: "));
+        footer.getChildren().addAll(new Label("Number of Subdivisions: " + subdivNum));
 
         // Set the horizontal space between each child in the HBox
         content.setSpacing(20);
         // Add the TreeView to the HBox
         content.getChildren().addAll(treeView,rightPane);
-        root.setSpacing(20);
+        root.setSpacing(10);
 
-        root.getChildren().addAll(menu, content, footer);
+        root.getChildren().addAll(mnuMain, content, footer);
 
         // Create the Scene
         Scene scene = new Scene(root,540,400);

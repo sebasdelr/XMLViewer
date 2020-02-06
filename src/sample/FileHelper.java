@@ -16,6 +16,8 @@ import java.io.File;
 public class FileHelper {
 
     private TreeItem<String> treeRootItem = null;
+    private int subdivNum = 0;
+
 
     public FileHelper(){
 
@@ -262,6 +264,8 @@ public class FileHelper {
         System.out.println("Number of divisions = " + divCount);
         System.out.println("Number of subdivisions = " + subDivCount);
 
+        subdivNum = subDivCount;
+
     }
 
     public String elementText(org.w3c.dom.Node node, String string){
@@ -278,5 +282,9 @@ public class FileHelper {
 
     public TreeItem<String> getTreeRootItem() {
         return treeRootItem;
+    }
+
+    public int getSubdivNum() {
+        return subdivNum;
     }
 }
