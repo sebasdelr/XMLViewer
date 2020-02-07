@@ -31,10 +31,9 @@ public class FileHelper {
 
     // This method creates an ArrayList of TreeItems (Products)
 
-    private Document document (String fileName){
+    private Document document (File file){
 
         try{
-            File file = new File(fileName);
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -51,7 +50,7 @@ public class FileHelper {
 
 
 
-    public void loadData(){
+    public void loadData(File file){
 
 
         final Node rootIcon = new ImageView(
@@ -61,7 +60,7 @@ public class FileHelper {
 
         int divCount = 0;
         int subDivCount = 0;
-        Document doc = document("xml.xml");
+        Document doc = document(file);
         doc.getDocumentElement().normalize();
 
         //Divisions

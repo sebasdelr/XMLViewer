@@ -1,16 +1,27 @@
 package sample;
 
+import java.awt.*;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
@@ -33,6 +44,15 @@ public class XMLViewer extends Application
     // Create the TextField
     private TextField textField = new TextField();
 
+    private Desktop desktop = Desktop.getDesktop();
+
+    private FileHelper fileHelper = new FileHelper();
+
+    private TreeItem rootItem = new TreeItem("Builder");
+
+    private int subdivNum;
+
+
 
     private final Node rootIcon = new ImageView(
             new Image(getClass().getResourceAsStream("monitor.png"))
@@ -49,12 +69,12 @@ public class XMLViewer extends Application
     public void start(Stage stage)
     {
 
-        FileHelper fileHelper = new FileHelper();
-        fileHelper.loadData();
+       // FileHelper fileHelper = new FileHelper();
+        //fileHelper.loadData();
 
         TreeItem<String> fileItem = fileHelper.getTreeRootItem();
 
-        int subdivNum = fileHelper.getSubdivNum();
+
 
 
 
@@ -75,14 +95,12 @@ public class XMLViewer extends Application
         // Select the root node
         treeView.getSelectionModel().selectFirst();
         // Create the root node and adds event handler to it
-        TreeItem rootItem = new TreeItem("Builder");
+        //TreeItem rootItem = new TreeItem("Builder");
 
 
 
 
-        rootItem.getChildren().addAll(fileItem);
-        // Set the Root Node
-        treeView.setRoot(fileItem);
+
 
 
 
@@ -119,6 +137,17 @@ public class XMLViewer extends Application
         mnuFile.getItems().addAll(mnuFileOpen, mnuFileClose,
                 mnuFilePrint, mnuFileExit);
 
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open XML File");
+        fileChooser.getExtensionFilters().addAll(
+                //new FileChooser.ExtensionFilter("All Files", "*.*"),
+                new FileChooser.ExtensionFilter("XML", "*.xml")
+        );
+
+
+
+        //Exit quits app
+
         mnuFileExit.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -126,6 +155,22 @@ public class XMLViewer extends Application
                 System.exit(0);
             }
         });
+        //Open loads file chooser
+        mnuFileOpen.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //fileChooser.showOpenDialog(stage);
+                File file = fileChooser.showOpenDialog(stage);
+                if (file != null) {
+                    //open File method below
+                    openFile(file);
+                }
+
+            }
+        });
+
+
+
 
 
         HBox footer = new HBox();
@@ -232,6 +277,16 @@ public class XMLViewer extends Application
 
         org.w3c.dom.Node node = nodeList.item(index) ;
         return node;
+    }
+
+    private void openFile(File file){
+        //desktop.open(file);
+        fileHelper.loadData(file);
+        rootItem.getChildren().addAll(fileHelper.getTreeRootItem());
+        // Set the Root Node
+        treeView.setRoot(fileHelper.getTreeRootItem());
+        subdivNum = fileHelper.getSubdivNum();
+
     }
 }
 
