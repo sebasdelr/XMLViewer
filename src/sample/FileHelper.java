@@ -18,6 +18,8 @@ public class FileHelper {
     private TreeItem<String> treeRootItem = null;
     private int subdivNum = 0;
 
+    private boolean fileLoaded = false;
+
 
     public FileHelper(){
 
@@ -265,6 +267,8 @@ public class FileHelper {
 
         subdivNum = subDivCount;
 
+        fileLoaded = true;
+
     }
 
     public String elementText(org.w3c.dom.Node node, String string){
@@ -286,4 +290,10 @@ public class FileHelper {
     public int getSubdivNum() {
         return subdivNum;
     }
+
+    public boolean isFileLoaded() {
+        return fileLoaded;
+    }
+
+
 }
