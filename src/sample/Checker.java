@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -16,23 +18,40 @@ public class Checker {
 
         popupwindow.initModality(Modality.APPLICATION_MODAL);
         popupwindow.setTitle("This is a pop up window");
+        CheckHelper checkHelper = new CheckHelper();
 
 
 
-HBox row1 = new HBox();
-row1.setSpacing(10);
+
+        HBox row1 = new HBox();
+        row1.setSpacing(10);
         Label label1 = new Label("Office coordinates");
         CheckBox officeCoord = new CheckBox();
+        officeCoord.setSelected((checkHelper.getOfficeCoord()!= 0));
         Label label2= new Label("Subdivision coordinates");
         CheckBox subCoord = new CheckBox();
 
 
+        officeCoord.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if(checkHelper.getOfficeCoord()==0){
+                    checkHelper.setOfficeCoord(1);
+                }
+                else {
+                    checkHelper.setOfficeCoord(0);
+                }
+                checkHelper.writeData();
+            }
+        });
 
 
 
 
 
-row1.getChildren().addAll(label1, officeCoord, label2, subCoord);
+
+
+        row1.getChildren().addAll(label1, officeCoord, label2, subCoord);
 
         Label instruction = new Label("Set settings:");
 
@@ -43,7 +62,6 @@ row1.getChildren().addAll(label1, officeCoord, label2, subCoord);
 
         layout.getChildren().addAll(instruction, row1, runChecker);
 
-        //layout.setAlignment(Pos.CENTER);
 
         Scene scene1= new Scene(layout, 400, 250);
 

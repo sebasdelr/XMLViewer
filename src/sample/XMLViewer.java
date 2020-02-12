@@ -51,6 +51,8 @@ public class XMLViewer extends Application
 
 
 
+
+
     private final Node rootIcon = new ImageView(
             new Image(getClass().getResourceAsStream("monitor.png"))
     );
