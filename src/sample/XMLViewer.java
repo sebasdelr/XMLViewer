@@ -43,6 +43,9 @@ public class XMLViewer extends Application
 
     //private Desktop desktop = Desktop.getDesktop();
 
+    private VBox contextBox = new VBox();
+    private VBox vbox = new VBox();
+
     private FileHelper fileHelper = new FileHelper();
 
     private TreeItem rootItem = new TreeItem("Builder");
@@ -214,6 +217,11 @@ public class XMLViewer extends Application
                 //address view vs plan spec view
                 writeMessage(name);
                 writeNodes(temp);
+                setContext("office");
+                System.out.println("test");
+            }
+            else {
+                setContext("other");
             }
 
         }
@@ -237,10 +245,11 @@ public class XMLViewer extends Application
 
 
         // Create the VBox
-        VBox vbox = new VBox();
+        //VBox vbox = new VBox();
         // Add children to the VBox
-        vbox.getChildren().addAll(new Label("Select an item to add to or remove."),hbox,
-                new Label("Message Log:"), textArea);
+        this.vbox.getChildren().addAll(new Label("Select an item to add to or remove."),hbox, contextBox);
+
+        //vbox.getChildren().
         // Set the vertical space between each child in the VBox
         vbox.setSpacing(20);
 
@@ -262,6 +271,44 @@ public class XMLViewer extends Application
 
     private void writeNodes(String msg){
         this.textArea.setText(msg);
+    }
+
+    private void setContext(String type){
+
+
+        switch (type){
+            case "office":
+                // Set the preferred number of text rows
+
+                this.contextBox.getChildren().clear();
+
+
+
+                this.contextBox.getChildren().addAll(new Label("Message Log:"), textArea);
+
+                //this.vbox.getChildren().addAll(new Label("Message Log:"), textArea);
+
+
+                // Create the VBox
+
+                break;
+
+
+
+
+            default:
+                // Set the preferred number of text rows
+                this.contextBox.getChildren().clear();
+                //this.contextBox.getChildren().addAll(new Label("Message Log:"));
+                break;
+
+
+        }
+
+
+
+
+
     }
 
 
