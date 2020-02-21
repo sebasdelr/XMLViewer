@@ -41,6 +41,8 @@ public class XMLViewer extends Application
     // Create the TextField
     private TextField textField = new TextField();
 
+    private File file;
+
     //private Desktop desktop = Desktop.getDesktop();
 
     private VBox contextBox = new VBox();
@@ -315,7 +317,12 @@ public class XMLViewer extends Application
 
     private void openFile(File file){
         //desktop.open(file);
-        fileHelper.loadData(file);
+        this.file = file;
+        fileHelper.loadData(this.file);
+
+        //use this file to parse for errors
+
+        //set a variable for the file itself so that it can be accessed by error log
 
 
 
