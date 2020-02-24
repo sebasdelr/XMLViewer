@@ -7,6 +7,7 @@ import java.io.File;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -62,10 +63,6 @@ public class XMLViewer extends Application
             new Image(getClass().getResourceAsStream("monitor.png"))
     );
 
-    public static void main(String[] args)
-    {
-        Application.launch(args);
-    }
 
 
 
@@ -84,6 +81,10 @@ public class XMLViewer extends Application
         // Select the root node
         treeView.getSelectionModel().selectFirst();
 
+        textField.setPrefColumnCount(18);
+        textField.setEditable(false);
+        textArea.setEditable(false);
+
         rootItem.setExpanded(false);
 
         EventHandler<MouseEvent> mouseEventHandle = (MouseEvent event) -> {
@@ -98,6 +99,7 @@ public class XMLViewer extends Application
 
         VBox root = new VBox();
         HBox content = new HBox();
+        content.setPadding(new Insets(0,0,0,10));
 
         HBox menu = new HBox();
         menu.getChildren().addAll(new Label("File"));
@@ -176,11 +178,13 @@ public class XMLViewer extends Application
 
 
         HBox footer = new HBox();
-        footer.setSpacing(10);
+
+        //footer.setSpacing(10);
         footer.getChildren().addAll(new Label("Number of Subdivisions: " + subdivNum));
+        footer.setPadding(new Insets(0,0,10,10));
 
         // Set the horizontal space between each child in the HBox
-        content.setSpacing(20);
+        content.setSpacing(10);
         // Add the TreeView to the HBox
         content.getChildren().addAll(treeView,rightPane);
         root.setSpacing(10);
@@ -188,7 +192,7 @@ public class XMLViewer extends Application
         root.getChildren().addAll(mnuMain, content, footer);
 
         // Create the Scene
-        Scene scene = new Scene(root,540,400);
+        Scene scene = new Scene(root,530,400);
         // Add the Scene to the Stage
         stage.setScene(scene);
         // Set the Title for the Scene
@@ -249,7 +253,7 @@ public class XMLViewer extends Application
         // Create the VBox
         //VBox vbox = new VBox();
         // Add children to the VBox
-        this.vbox.getChildren().addAll(new Label("Select an item to add to or remove."),hbox, contextBox);
+        this.vbox.getChildren().addAll(hbox, contextBox);
 
         //vbox.getChildren().
         // Set the vertical space between each child in the VBox
@@ -261,16 +265,10 @@ public class XMLViewer extends Application
 
 
 
-
-    // Helper Methods for the Event Handlers
-
-
-    // Method for Logging
     private void writeMessage(String msg)
     {
         this.textField.setText(msg);
     }
-
     private void writeNodes(String msg){
         this.textArea.setText(msg);
     }
@@ -280,28 +278,13 @@ public class XMLViewer extends Application
 
         switch (type){
             case "office":
-                // Set the preferred number of text rows
-
                 this.contextBox.getChildren().clear();
-
-
-
-                this.contextBox.getChildren().addAll(new Label("Message Log:"), textArea);
-
-                //this.vbox.getChildren().addAll(new Label("Message Log:"), textArea);
-
-
-                // Create the VBox
-
+                this.contextBox.setSpacing(10);
+                this.contextBox.getChildren().addAll(new Label("Address:"), textArea);
                 break;
 
-
-
-
             default:
-                // Set the preferred number of text rows
                 this.contextBox.getChildren().clear();
-                //this.contextBox.getChildren().addAll(new Label("Message Log:"));
                 break;
 
 
@@ -320,17 +303,17 @@ public class XMLViewer extends Application
         this.file = file;
         fileHelper.loadData(this.file);
 
-        //use this file to parse for errors
-
-        //set a variable for the file itself so that it can be accessed by error log
-
-
-
         rootItem.getChildren().addAll(fileHelper.getTreeRootItem());
         // Set the Root Node
         treeView.setRoot(fileHelper.getTreeRootItem());
         subdivNum = fileHelper.getSubdivNum();
 
     }
+
+    public static void main(String[] args)
+    {
+        Application.launch(args);
+    }
+
 }
 

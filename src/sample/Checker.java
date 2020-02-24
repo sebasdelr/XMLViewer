@@ -2,6 +2,7 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -58,6 +59,7 @@ public class Checker {
         Button runChecker = new Button("Run Checker");
 
         VBox layout= new VBox(10);
+        layout.setPadding(new Insets(10,0,10,10));
 
 
         layout.getChildren().addAll(instruction, row1, runChecker);
