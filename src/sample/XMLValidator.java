@@ -13,10 +13,12 @@ import org.xml.sax.SAXException;
 
 public class XMLValidator {
 
+
+
+
     public XMLValidator() {
 
-        System.out.println(validateXMLSchema("test.xsd",
-                "note.xml"));
+
 
     }
 
@@ -28,6 +30,7 @@ public class XMLValidator {
 
             Validator validator = schema.newValidator();
             validator.validate(new StreamSource(new File(xmlFile)));
+            System.out.println("Ran");
 
         } catch (IOException | SAXException e) {
             System.out.println("Exception: " + e.getMessage());

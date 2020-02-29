@@ -55,6 +55,8 @@ public class XMLViewer extends Application
 
     private int subdivNum;
 
+    private XMLValidator xmlValidator = new XMLValidator();
+
 
 
 
@@ -155,18 +157,18 @@ public class XMLViewer extends Application
             @Override
             public void handle(ActionEvent event) {
 
-                if(fileHelper.isFileLoaded()){
+//                if(fileHelper.isFileLoaded()){
                     Checker.display();
-                }
-                else{
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("File not loaded");
-                    //alert.setHeaderText("Look, a Warning Dialog");
-                    alert.setContentText("A file has not been loaded. Make sure you load a file first.");
-
-                    alert.showAndWait();
-
-                }
+//                }
+//                else{
+//                    Alert alert = new Alert(Alert.AlertType.WARNING);
+//                    alert.setTitle("File not loaded");
+//                    //alert.setHeaderText("Look, a Warning Dialog");
+//                    alert.setContentText("A file has not been loaded. Make sure you load a file first.");
+//
+//                    alert.showAndWait();
+//
+//                }
 
 
 
