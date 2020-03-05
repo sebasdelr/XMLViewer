@@ -12,38 +12,39 @@ import sample.FileHelper;
 import java.io.File;
 import java.util.ArrayList;
 
-public class ContentViewer {
+public class ContentPanel {
 
     private HBox content = new HBox();
-    //TreeViewHelper helper = new TreeViewHelper();
-    private VBox root = new VBox();
+
 
     private TextField textField = new TextField();
     private TextArea textArea = new TextArea();
 
-    private FileHelper fileHelper = new FileHelper();
+
 
     private TreeItem rootItem = new TreeItem("Builder");
-
-    //ArrayList<TreeItem> products = helper.getProducts();
-
-    // Create the TreeView
     TreeView treeView = new TreeView();
     // Create the Root TreeItem
-
-
     private File file;
+    private FileHelper fileHelper = new FileHelper();
 
 
 
-    public ContentViewer(){
-        initViewer();
+    public ContentPanel(){
+        initPanel();
 
     }
 
-    private void initViewer(){
+    private void initPanel(){
 
-           // Set a cell factory to use TextFieldTreeCell
+        content.getChildren().addAll(getTreeView(),getRightPane());
+        content.setSpacing(10);
+
+    }
+
+    private TreeView getTreeView(){
+
+        // Set a cell factory to use TextFieldTreeCell
         treeView.setCellFactory(TextFieldTreeCell.forTreeView());
         // Select the root node
         treeView.getSelectionModel().selectFirst();
@@ -58,11 +59,28 @@ public class ContentViewer {
         // Set the Root Node
         treeView.setRoot(rootItem);
 
-        content.getChildren().addAll(treeView,new Label("Message Log:"), textArea);
+        return treeView;
 
-        //content.getChildren().addAll(rootItem, this.textField);
+    }
+
+    private VBox getRightPane()
+    {
+        HBox hbox = new HBox();
+        VBox vBox = new VBox();
 
 
+        textArea.setPrefRowCount(15);
+        textArea.setPrefColumnCount(20);
+
+        hbox.getChildren().addAll(new Label("Item:"), textField);
+        hbox.setSpacing(10);
+
+
+        vBox.getChildren().addAll(hbox,new Label("Message Log:"), textArea);
+        vBox.setSpacing(20);
+
+
+        return vBox;
     }
 
     public HBox getContent() {

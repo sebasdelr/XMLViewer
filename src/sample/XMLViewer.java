@@ -103,8 +103,7 @@ public class XMLViewer extends Application
         HBox content = new HBox();
         content.setPadding(new Insets(0,0,0,10));
 
-        HBox menu = new HBox();
-        menu.getChildren().addAll(new Label("File"));
+
 
         MenuBar mnuMain = new MenuBar();
 
