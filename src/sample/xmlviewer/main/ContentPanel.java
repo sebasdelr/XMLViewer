@@ -44,14 +44,14 @@ public class ContentPanel {
 
     private TreeView getTreeView(){
 
-        // Set a cell factory to use TextFieldTreeCell
-        treeView.setCellFactory(TextFieldTreeCell.forTreeView());
-        // Select the root node
-        treeView.getSelectionModel().selectFirst();
-
-        textField.setPrefColumnCount(18);
-        textField.setEditable(false);
-        textArea.setEditable(false);
+//        // Set a cell factory to use TextFieldTreeCell
+//        treeView.setCellFactory(TextFieldTreeCell.forTreeView());
+//        // Select the root node
+//        treeView.getSelectionModel().selectFirst();
+//
+//        textField.setPrefColumnCount(18);
+//        textField.setEditable(false);
+//        textArea.setEditable(false);
 
         rootItem.setExpanded(false);
         // Add children to the root
@@ -82,6 +82,20 @@ public class ContentPanel {
 
         return vBox;
     }
+
+    public void setRootItem(File file) {
+
+
+        fileHelper.loadData(file);
+
+        rootItem.getChildren().addAll(fileHelper.getTreeRootItem());
+
+
+
+        this.treeView = treeView;
+    }
+
+
 
     public HBox getContent() {
         return content;
