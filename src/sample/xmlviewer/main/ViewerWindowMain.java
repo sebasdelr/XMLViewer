@@ -5,7 +5,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sample.xmlviewer.data.ViewerManager;
 import sample.xmlviewer.openfile.FileOpener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 import java.io.File;
 
@@ -13,6 +16,7 @@ public class ViewerWindowMain extends Application {
 
     //Main VBox
     private VBox mainVBox = new VBox();
+    public static ContentPanel contentPanel = new ContentPanel();
 
     public static void main(String[] args)
     {
@@ -26,22 +30,17 @@ public class ViewerWindowMain extends Application {
         FileOpener fileOpener = new FileOpener();
         fileOpener.xmlOpener(stage);
 
+        ViewerManager.isWorking();
+
+
         //Panels
         EmptyContentPanel emptyContentPanel = new EmptyContentPanel();
-        ContentPanel contentPanel = new ContentPanel();
+        //ContentPanel contentPanel = new ContentPanel();
         MenuPanel menuPanel = new MenuPanel(stage);
         FooterPanel footerPanel = new FooterPanel();
 
-        HBox hbox = emptyContentPanel.getContent();
-
-//        if(file.exists()){
-//            hbox = contentPanel.getContent();
-//
-//        }
-
-
         //Set main box
-        mainVBox.getChildren().setAll(menuPanel.getMenuMain(), hbox, footerPanel.getFooter());
+        mainVBox.getChildren().setAll(menuPanel.getMenuMain(), contentPanel.getContent(), footerPanel.getFooter());
         mainVBox.setSpacing(10);
 
         //Set scene
@@ -51,7 +50,11 @@ public class ViewerWindowMain extends Application {
         stage.setScene(scene);
         stage.show();
 
+
+
     }
+
+
 
 
 }

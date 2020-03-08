@@ -6,6 +6,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import sample.xmlviewer.data.ViewerManager;
 import sample.xmlviewer.openfile.FileOpener;
 
 import java.io.File;
@@ -48,6 +49,7 @@ public class MenuPanel {
             public void handle(ActionEvent event) {
                 //fileChooser.showOpenDialog(stage);
                 fileOpener.xmlOpener(stage);
+                ViewerManager.isWorking();
                 if (fileOpener.getFile() != null) {
                     //open File method below
                    setFile(fileOpener.getFile());
@@ -58,10 +60,6 @@ public class MenuPanel {
 
   }
 
-  private void initListeners(){
-
-
-  }
 
   public void setFile(File file) {
       this.file = file;

@@ -1,13 +1,17 @@
 package sample.xmlviewer.openfile;
 
+import javafx.scene.control.TreeItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import sample.xmlviewer.data.ViewerManager;
+import sample.xmlviewer.helpers.XMLFileHelper;
 
 import java.io.File;
 
 public class FileOpener {
 
     private File file;
+    private XMLFileHelper xmlFileHelper = new XMLFileHelper();
 
     public FileOpener(){
 
@@ -22,6 +26,14 @@ public class FileOpener {
                 new FileChooser.ExtensionFilter("XML", "*.xml")
         );
         this.file = fileChooser.showOpenDialog(stage);
+
+        if(this.file != null){
+            xmlFileHelper.loadData(this.file);
+            ViewerManager.setTreeItem(xmlFileHelper.getTreeRootItem());
+
+
+
+        }
 
     }
 
@@ -38,6 +50,26 @@ public class FileOpener {
     }
 
     public File getFile() {
-        return file;
+        return this.file;
     }
+
+    public TreeItem<String> getTreeItem() {
+        TreeItem<String> treeItems = null;
+
+
+        if(this.file != null){
+            xmlFileHelper.loadData(this.file);
+            treeItems = xmlFileHelper.getTreeRootItem();
+
+
+        }
+
+        return treeItems;
+
+    }
+
+
+
+
+
 }

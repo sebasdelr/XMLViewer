@@ -15,6 +15,8 @@ import java.io.File;
 
 public class XMLFileHelper {
 
+    private final String RESOURCE_PATH = "/sample/xmlviewer/resources/";
+
     private TreeItem<String> treeRootItem = null;
     private int subdivNum = 0;
 
@@ -56,7 +58,7 @@ public class XMLFileHelper {
 
 
         final Node rootIcon = new ImageView(
-                new Image(getClass().getResourceAsStream("monitor.png"))
+                new Image(getClass().getResourceAsStream(RESOURCE_PATH + "monitor.png"))
         );
         treeRootItem = new TreeItem<String>("Builder", rootIcon);
 
@@ -77,9 +79,7 @@ public class XMLFileHelper {
                 int subdivNum = 0;
                 String divisionName = elementText(nNode, "ReportingName");
 
-                TreeItem<String> divisionItem = new TreeItem<String> (divisionName, new ImageView(
-                        new Image(getClass().getResourceAsStream("carpeta.png"))
-                ));
+                TreeItem<String> divisionItem = new TreeItem<String> (divisionName);
                 treeRootItem.getChildren().add(divisionItem);
 
                 NodeList children = nNode.getChildNodes();
@@ -139,9 +139,7 @@ public class XMLFileHelper {
 
                         System.out.println("\t\t PLANS:");
 
-                        TreeItem<String> plansItem = new TreeItem<String> ("Plans", new ImageView(
-                                new Image(getClass().getResourceAsStream("house.png"))
-                        ));
+                        TreeItem<String> plansItem = new TreeItem<String> ("Plans");
                         subdivisionItem.getChildren().add(plansItem);
 
 
@@ -280,6 +278,7 @@ public class XMLFileHelper {
     public org.w3c.dom.Node nodeGetter (NodeList nodeList, int index){
 
         org.w3c.dom.Node node = nodeList.item(index) ;
+
         return node;
     }
 
