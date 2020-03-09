@@ -9,6 +9,7 @@ import sample.xmlviewer.data.ViewerManager;
 import sample.xmlviewer.openfile.FileOpener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import sample.xmlviewer.settings.Checker;
 
 import java.io.File;
 
@@ -29,6 +30,9 @@ public class ViewerWindowMain extends Application {
         File file = null;
         FileOpener fileOpener = new FileOpener();
         fileOpener.xmlOpener(stage);
+        Checker checker = new Checker();
+
+        checker.display();
 
         ViewerManager.isWorking();
 
