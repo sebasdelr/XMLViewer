@@ -10,13 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sample.xmlviewer.data.ViewerManager;
 import sample.xmlviewer.helpers.CheckHelper;
-import sample.XMLValidator;
-
-import java.io.File;
 
 
 public class Checker {
@@ -26,9 +23,10 @@ public class Checker {
 
     public static void display()
     {
+        //ViewerManager.isWorking();
 
-        File xmlFile;
-        XMLValidator xmlValidator = new XMLValidator();
+//        File xmlFile;
+//        XMLValidator xmlValidator = new XMLValidator();
 
         Stage popupwindow=new Stage();
 
@@ -64,9 +62,7 @@ public class Checker {
 
         Scene scene1= new Scene(layout, 400, 250);
 
-        popupwindow.setScene(scene1);
 
-        popupwindow.showAndWait();
 
 
         officeCoord.setOnAction(new EventHandler<ActionEvent>() {
@@ -79,20 +75,25 @@ public class Checker {
                 else {
                     checkHelper.setOfficeCoord(0);
                 }
+                ViewerManager.isWorking();
                 checkHelper.writeData();
             }
         });
 
-        runChecker.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                String file1 = "note.xml";
-                String file2 = "test.xsd";
-                xmlValidator.validateXMLSchema(file2, file1);
+        popupwindow.setScene(scene1);
 
+        popupwindow.showAndWait();
 
-            }
-        });
+//        runChecker.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent e) {
+//                String file1 = "note.xml";
+//                String file2 = "test.xsd";
+//                xmlValidator.validateXMLSchema(file2, file1);
+//
+//
+//            }
+//        });
 
 
     }
