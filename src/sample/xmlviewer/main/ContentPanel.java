@@ -2,6 +2,7 @@ package sample.xmlviewer.main;
 
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -15,16 +16,14 @@ import java.io.File;
 public class ContentPanel {
 
     private HBox content = new HBox();
-    private EmptyContentPanel emptyContentPanel = new EmptyContentPanel();
 
     private TextField textField = new TextField();
     private TextArea textArea = new TextArea();
 
     private TreeItem rootItem = new TreeItem("Builder");
     TreeView treeView = new TreeView();
-    // Create the Root TreeItem
 
-
+    private EmptyContentPanel emptyContentPanel = new EmptyContentPanel();
 
     public ContentPanel(){
         initPanel();
@@ -35,11 +34,11 @@ public class ContentPanel {
 
         content.getChildren().addAll(emptyContentPanel.getContent());
         content.setSpacing(10);
+        content.setAlignment(Pos.CENTER);
 
     }
 
     private TreeView getTreeView(){
-
 
         rootItem.setExpanded(false);
         treeView.setRoot(rootItem);
@@ -62,7 +61,6 @@ public class ContentPanel {
         vBox.getChildren().addAll(hbox,new Label("Message Log:"), textArea);
         vBox.setSpacing(20);
 
-
         return vBox;
     }
 
@@ -77,8 +75,6 @@ public class ContentPanel {
             };
 
             treeView.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle);
-
-
         }
 
         else{

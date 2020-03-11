@@ -14,57 +14,56 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.xmlviewer.data.ViewerManager;
 import sample.xmlviewer.helpers.CheckHelper;
+import sample.xmlviewer.openfile.FileOpener;
 
 
 public class Checker {
 
     TextArea textArea = new TextArea();
+    private static Stage stage;
+
+    public Checker(Stage stage) {
+        this.stage = stage;
+    }
 
 
     public static void display()
     {
-        //ViewerManager.isWorking();
-
-//        File xmlFile;
-//        XMLValidator xmlValidator = new XMLValidator();
-
         Stage popupwindow=new Stage();
+        FileOpener fileOpener = new FileOpener();
 
-        popupwindow.initModality(Modality.APPLICATION_MODAL);
-        popupwindow.setTitle("This is a pop up window");
+        //Boxes
+        HBox row1 = new HBox();
+        VBox layout= new VBox();
+
+        //Buttons
+        Button runChecker = new Button("Run Checker");
+        Button loadXML = new Button("Load XML");
+
+        //Checkboxes
+        CheckBox officeCoord = new CheckBox();
+        CheckBox subCoord = new CheckBox();
+
+        //Labels
+        Label instruction = new Label("Set settings:");
+        Label label1 = new Label("Office coordinates");
+        Label label2= new Label("Subdivision coordinates");
+        Label xdsFile;
+
         CheckHelper checkHelper = new CheckHelper();
 
 
-        HBox row1 = new HBox();
         row1.setSpacing(10);
-        Label label1 = new Label("Office coordinates");
-        CheckBox officeCoord = new CheckBox();
-        officeCoord.setSelected((checkHelper.getOfficeCoord()!= 0));
-        Label label2= new Label("Subdivision coordinates");
-        CheckBox subCoord = new CheckBox();
-
-// open button for xml, open button for XSD
-
         row1.getChildren().addAll(label1, officeCoord, label2, subCoord);
 
-        Label instruction = new Label("Set settings:");
-
-        Button runChecker = new Button("Run Checker");
-        Button loadXML = new Button("Load XML");
-        Button loadXDS = new Button("Load XDS");
-
-        VBox layout= new VBox(10);
+        layout.setSpacing(10);
         layout.setPadding(new Insets(10,0,10,10));
+        layout.getChildren().addAll(instruction, row1, runChecker, loadXML);
 
 
-        layout.getChildren().addAll(instruction, row1, runChecker, loadXDS, loadXML);
+        officeCoord.setSelected((checkHelper.getOfficeCoord()!= 0));
 
-
-        Scene scene1= new Scene(layout, 400, 250);
-
-
-
-
+        //Handlers
         officeCoord.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -80,9 +79,13 @@ public class Checker {
             }
         });
 
-        popupwindow.setScene(scene1);
+        loadXML.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                fileOpener.xmlOpener(popupwindow);
+            }
+        });
 
-        popupwindow.showAndWait();
 
 //        runChecker.setOnAction(new EventHandler<ActionEvent>() {
 //            @Override
@@ -95,6 +98,13 @@ public class Checker {
 //            }
 //        });
 
+        Scene scene1= new Scene(layout, 400, 250);
+
+        popupwindow.initModality(Modality.APPLICATION_MODAL);
+        popupwindow.setTitle("This is a pop up window");
+        popupwindow.setScene(scene1);
+
+        popupwindow.showAndWait();
 
     }
 

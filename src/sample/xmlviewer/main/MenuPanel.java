@@ -14,12 +14,10 @@ import java.io.File;
 public class MenuPanel {
     private MenuBar menuMain = new MenuBar();
     private Stage stage;
-    private File file;
 
     public MenuPanel(Stage stage){
         this.stage = stage;
         initPanel();
-
     }
 
     private void initPanel(){
@@ -50,26 +48,12 @@ public class MenuPanel {
                 //fileChooser.showOpenDialog(stage);
                 fileOpener.xmlOpener(stage);
                 ViewerManager.isWorking();
-                if (fileOpener.getFile() != null) {
-                    //open File method below
-                   setFile(fileOpener.getFile());
-                }
 
             }
         });
 
   }
 
-
-  public void setFile(File file) {
-      this.file = file;
-  }
-
-
-
-    public File getFile() {
-        return file;
-    }
 
     public MenuBar getMenuMain() {
         return menuMain;

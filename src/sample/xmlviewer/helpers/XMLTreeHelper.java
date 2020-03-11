@@ -13,7 +13,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
 
-public class XMLFileHelper {
+public class XMLTreeHelper {
 
     private final String RESOURCE_PATH = "/sample/xmlviewer/resources/";
 
@@ -23,7 +23,7 @@ public class XMLFileHelper {
     private boolean fileLoaded = false;
 
 
-    public XMLFileHelper(){
+    public XMLTreeHelper(){
 
 
     }
@@ -214,8 +214,6 @@ public class XMLFileHelper {
 
                                             }
 
-
-
                                         }
 
 
@@ -276,9 +274,7 @@ public class XMLFileHelper {
     }
 
     public org.w3c.dom.Node nodeGetter (NodeList nodeList, int index){
-
         org.w3c.dom.Node node = nodeList.item(index) ;
-
         return node;
     }
 
