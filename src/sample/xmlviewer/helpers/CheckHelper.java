@@ -16,9 +16,10 @@ public class CheckHelper {
     private FileOutputStream outLines = null;
     private Scanner scannerLines = null;
     private PrintWriter printWriter = null;
-    private int[] settingFlags = {0,0};
+    private String[] settingFlags = {"0","0"};
     final private String CONFIGINI = "config.ini";
-    private List<String> settings = null;
+    //private List<String> settings = null;
+    private String xsdFileName;
 
     public CheckHelper(){
         loadData();
@@ -36,7 +37,8 @@ public class CheckHelper {
             //maybe create a settings class with variable and value
 
             lineString += "officecoord" + "=" + this.settingFlags[0] + "\n";
-            lineString += "subcoord" + "=" + this.settingFlags[1];
+            lineString += "subcoord" + "=" + this.settingFlags[1] + "\n";
+            lineString += "xsd" + "=" + this.xsdFileName;
 
             printWriter.println(lineString);
             System.out.println(lineString);
@@ -63,10 +65,12 @@ public class CheckHelper {
             while (scannerLines.hasNextLine()) {
 
                 String setting = "";
-                int tempFlag;
+                String tempFlag;
 
                 String[] itemPieces = scannerLines.nextLine().split("=");
-                tempFlag = parseInt(itemPieces[1]);
+                setting = itemPieces[0];
+                tempFlag = itemPieces[1];
+
 
 
                 switch (setting) {
@@ -76,6 +80,8 @@ public class CheckHelper {
                     case "subcoord":
                         settingFlags[1] = tempFlag;
                         break;
+                    case "xsd":
+                        xsdFileName = tempFlag;
                 }
 
 
@@ -92,20 +98,27 @@ public class CheckHelper {
     }
 
 
-    public void setOfficeCoord(int flag) {
+    public void setOfficeCoord(String flag) {
         this.settingFlags[0] = flag;
     }
 
-    public void setSubCoord(int flag) {
+    public void setSubCoord(String flag) {
         this.settingFlags[1] = flag;
     }
 
-    public int getOfficeCoord() {
+    public String getOfficeCoord() {
         return this.settingFlags[0];
     }
 
-    public int getSubCoord() {
+    public String getSubCoord() {
         return this.settingFlags[1];
     }
 
+    public String getXsdFileName() {
+        return xsdFileName;
+    }
+
+    public void setXsdFileName(String xsdFileName) {
+        this.xsdFileName = xsdFileName;
+    }
 }

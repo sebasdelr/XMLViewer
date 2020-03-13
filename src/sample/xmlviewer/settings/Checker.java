@@ -14,6 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.xmlviewer.data.ViewerManager;
 import sample.xmlviewer.helpers.CheckHelper;
+import sample.xmlviewer.helpers.XMLValidator;
 import sample.xmlviewer.openfile.FileOpener;
 
 
@@ -29,16 +30,25 @@ public class Checker {
 
     public static void display()
     {
+
         Stage popupwindow=new Stage();
         FileOpener fileOpener = new FileOpener();
+        XMLValidator xmlValidator = new XMLValidator();
 
         //Boxes
         HBox row1 = new HBox();
+        HBox xds = new HBox();
+        HBox xml = new HBox();
         VBox layout= new VBox();
 
+        Scene scene1= new Scene(layout, 400, 250);
+
         //Buttons
-        Button runChecker = new Button("Run Checker");
         Button loadXML = new Button("Load XML");
+
+        Button runChecker = new Button("Run Checker");
+        CheckHelper checkHelper = new CheckHelper();
+
 
         //Checkboxes
         CheckBox officeCoord = new CheckBox();
@@ -47,10 +57,12 @@ public class Checker {
         //Labels
         Label instruction = new Label("Set settings:");
         Label label1 = new Label("Office coordinates");
-        Label label2= new Label("Subdivision coordinates");
+        Label label2 = new Label("Subdivision coordinates");
+        Label currentXML;
+        Label currentXSD;
         Label xdsFile;
 
-        CheckHelper checkHelper = new CheckHelper();
+        officeCoord.setSelected((checkHelper.getOfficeCoord()!= "0"));
 
 
         row1.setSpacing(10);
@@ -58,21 +70,21 @@ public class Checker {
 
         layout.setSpacing(10);
         layout.setPadding(new Insets(10,0,10,10));
-        layout.getChildren().addAll(instruction, row1, runChecker, loadXML);
+        layout.getChildren().addAll(instruction, row1, loadXML, runChecker);
 
 
-        officeCoord.setSelected((checkHelper.getOfficeCoord()!= 0));
+
 
         //Handlers
         officeCoord.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(checkHelper.getOfficeCoord()==0){
-                    checkHelper.setOfficeCoord(1);
+                if(checkHelper.getOfficeCoord()=="0"){
+                    checkHelper.setOfficeCoord("1");
 
                 }
                 else {
-                    checkHelper.setOfficeCoord(0);
+                    checkHelper.setOfficeCoord("0");
                 }
                 ViewerManager.isWorking();
                 checkHelper.writeData();
@@ -87,18 +99,25 @@ public class Checker {
         });
 
 
-//        runChecker.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent e) {
-//                String file1 = "note.xml";
-//                String file2 = "test.xsd";
-//                xmlValidator.validateXMLSchema(file2, file1);
-//
-//
-//            }
-//        });
+        runChecker.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                String file1 = "note.xml";
+                String file2 = "test.xsd";
 
-        Scene scene1= new Scene(layout, 400, 250);
+                try {
+                    xmlValidator.initValidator(checkHelper.getXsdFileName());
+                }
+                catch (Exception ex){
+                    ex.printStackTrace();
+                }
+
+
+
+            }
+        });
+
+
 
         popupwindow.initModality(Modality.APPLICATION_MODAL);
         popupwindow.setTitle("This is a pop up window");

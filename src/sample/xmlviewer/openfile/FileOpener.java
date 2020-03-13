@@ -9,7 +9,8 @@ import java.io.File;
 
 public class FileOpener {
 
-    private File file;
+    private File xmlFile;
+    private File xsdFile;
     private XMLTreeHelper xmlTreeHelper = new XMLTreeHelper();
 
     public FileOpener(){
@@ -24,25 +25,29 @@ public class FileOpener {
                 //new FileChooser.ExtensionFilter("All Files", "*.*"),
                 new FileChooser.ExtensionFilter("XML", "*.xml")
         );
-        this.file = fileChooser.showOpenDialog(stage);
+        this.xmlFile = fileChooser.showOpenDialog(stage);
 
-        if(this.file != null){
-            xmlTreeHelper.loadData(this.file);
+        if(this.xmlFile != null){
+            xmlTreeHelper.loadData(this.xmlFile);
             ViewerManager.setTreeItem(xmlTreeHelper.getTreeRootItem());
 
         }
 
     }
 
-    public void xdsOpener(Stage stage){
+    public void xsdOpener(Stage stage){
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.getExtensionFilters().addAll(
                 //new FileChooser.ExtensionFilter("All Files", "*.*"),
-                new FileChooser.ExtensionFilter("XDS", "*.xds")
+                new FileChooser.ExtensionFilter("XSD", "*.xsd")
         );
-        fileChooser.showOpenDialog(stage);
+        this.xsdFile = fileChooser.showOpenDialog(stage);
+
+        if(this.xsdFile != null){
+            //save to config
+        }
 
     }
 
