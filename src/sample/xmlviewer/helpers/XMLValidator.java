@@ -32,6 +32,8 @@ import java.util.List;
 public class XMLValidator {
 
     public static List exceptions = new LinkedList();
+    private String results;
+    private int errorNum;
 
 
     public XMLValidator(){
@@ -48,13 +50,12 @@ public class XMLValidator {
         Document document = this.loadXml(xmlFilename);
 
         try {
-            System.out.println("Custom Error Handler while Validating XML against XSD");
-
 
             this.validate(document, schemaFilename);
 
 
             System.out.println("Validation is successful");
+
 
         } catch (SAXException e) {
 
@@ -90,11 +91,18 @@ public class XMLValidator {
             String message = tempException.getMessage();
 
             System.out.println("[ Err ] line nr: " + lineNumber + " column nr: " + columnNumber + " message: " + message);
+            this.results+="[ Err ] line nr: " + lineNumber + " column nr: " + columnNumber + " message: " + message;
 
         }
 
 
-        System.out.println(xsdErrorHandler.getExceptions().size());
+
+
+        if(xsdErrorHandler.getExceptions().size() == 0){
+            this.results = "Validation is successful";
+        }
+
+        errorNum = xsdErrorHandler.getExceptions().size();
     }
 
     private DocumentBuilder createDocumentBuilder()
@@ -112,5 +120,13 @@ public class XMLValidator {
 
     private InputStream getInputStream(String filename) {
         return getClass().getClassLoader().getResourceAsStream(filename);
+    }
+
+    public String getResults() {
+        return results;
+    }
+
+    public int getErrorNum() {
+        return errorNum;
     }
 }

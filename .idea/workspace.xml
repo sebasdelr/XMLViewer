@@ -2,21 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added File Helper">
-      <change afterPath="$PROJECT_DIR$/src/sample/xmlviewer/settings/config.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/note.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/xmlviewer/resources/note.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/helpers/CheckHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/helpers/CheckHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/helpers/XMLValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/helpers/XMLValidator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/openfile/FileOpener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/openfile/FileOpener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/helpers/CheckHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/xmlviewer/helpers/CheckHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/helpers/XMLValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/xmlviewer/helpers/XMLValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/openfile/FileOpener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/xmlviewer/openfile/FileOpener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/settings/Checker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/xmlviewer/settings/Checker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.xsd" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/xmlviewer/resources/test.xsd" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,10 +329,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="720" y="331" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581518330559" />
-    <state x="765" y="228" key="#com.intellij.ide.util.MemberChooser" timestamp="1584109503412">
+    <state x="765" y="228" key="#com.intellij.ide.util.MemberChooser" timestamp="1584457958704">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="228" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584109503412" />
+    <state x="765" y="228" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584457958704" />
     <state x="694" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1583934980411">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -359,25 +355,25 @@
     </state>
     <state x="740" y="279" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583760560849" />
     <state x="2660" y="279" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1580604428132" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1584109694016">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1584458044123">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584109694016" />
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584458044123" />
     <state width="1877" height="281" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1584024725377" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1584109694016">
+    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1584458044123">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584109694016" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584458044123" />
     <state width="1877" height="281" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1584024725377" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1584109694016">
+    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1584458044123">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584109694016" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584458044123" />
     <state width="1877" height="281" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1584024725377" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1584109694016">
+    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1584458044123">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584109694016" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584458044123" />
     <state width="1877" height="281" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1584024725377" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1583850519504">
       <screen x="0" y="0" width="1920" height="1040" />

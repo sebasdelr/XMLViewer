@@ -3,6 +3,7 @@ package sample.xmlviewer.settings;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -12,6 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import sample.xmlviewer.data.ViewerManager;
 import sample.xmlviewer.helpers.CheckHelper;
 import sample.xmlviewer.helpers.XMLValidator;
@@ -37,7 +39,8 @@ public class Checker {
 
         //Boxes
         HBox row1 = new HBox();
-        HBox xds = new HBox();
+        HBox row2 = new HBox();
+        HBox xsd = new HBox();
         HBox xml = new HBox();
         VBox layout= new VBox();
 
@@ -45,10 +48,12 @@ public class Checker {
 
         //Buttons
         Button loadXML = new Button("Load XML");
-
+        Button changeXSD = new Button("Change XSD");
         Button runChecker = new Button("Run Checker");
-        CheckHelper checkHelper = new CheckHelper();
+        Button openViewer = new Button("Open Viewer");
+        openViewer.setDisable(true);
 
+        CheckHelper checkHelper = new CheckHelper();
 
         //Checkboxes
         CheckBox officeCoord = new CheckBox();
@@ -58,19 +63,29 @@ public class Checker {
         Label instruction = new Label("Set settings:");
         Label label1 = new Label("Office coordinates");
         Label label2 = new Label("Subdivision coordinates");
-        Label currentXML;
-        Label currentXSD;
-        Label xdsFile;
+        Label currentXML = new Label("No XML file has been loaded yet.");
+        Label currentXSD = new Label("Current XSD File: ");
+        Label xsdFileName = new Label(checkHelper.getXsdFileName());
+
+        TextArea textArea = new TextArea();
+
+        textArea.setEditable(false);
 
         officeCoord.setSelected((checkHelper.getOfficeCoord()!= "0"));
 
 
         row1.setSpacing(10);
         row1.getChildren().addAll(label1, officeCoord, label2, subCoord);
+        row2.setSpacing(10);
+        row2.getChildren().addAll(loadXML, changeXSD, runChecker, openViewer);
+        row2.setAlignment(Pos.CENTER);
+
+        xsd.setSpacing(10);
+        xsd.getChildren().addAll(currentXSD, xsdFileName);
 
         layout.setSpacing(10);
-        layout.setPadding(new Insets(10,0,10,10));
-        layout.getChildren().addAll(instruction, row1, loadXML, runChecker);
+        layout.setPadding(new Insets(10,10,10,10));
+        layout.getChildren().addAll(instruction, row1, row2, xsd, currentXML, textArea);
 
 
 
@@ -95,6 +110,24 @@ public class Checker {
             @Override
             public void handle(ActionEvent event) {
                 fileOpener.xmlOpener(popupwindow);
+                if(fileOpener.getXmlFile() != null){
+                    currentXML.setText("Current XML file: " + fileOpener.getXmlPath());
+                }
+
+
+
+            }
+        });
+
+        changeXSD.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                fileOpener.xsdOpener(popupwindow);
+                if(fileOpener.getXsdFile() != null){
+                    checkHelper.setXsdFileName(fileOpener.getXsdPath());
+                    checkHelper.writeData();
+                    xsdFileName.setText(checkHelper.getXsdFileName());
+                }
             }
         });
 
@@ -107,13 +140,31 @@ public class Checker {
 
                 try {
                     xmlValidator.initValidator(checkHelper.getXsdFileName());
+                    textArea.setText(xmlValidator.getResults());
+                    if(xmlValidator.getErrorNum() == 0){
+                        openViewer.setDisable(false);
+
+                    }
                 }
                 catch (Exception ex){
                     ex.printStackTrace();
                 }
 
+            }
+        });
+
+        openViewer.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                popupwindow.close();
+            }
+        });
 
 
+
+        popupwindow.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                System.exit(0);
             }
         });
 

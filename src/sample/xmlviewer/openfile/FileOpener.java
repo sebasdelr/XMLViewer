@@ -12,6 +12,8 @@ public class FileOpener {
     private File xmlFile;
     private File xsdFile;
     private XMLTreeHelper xmlTreeHelper = new XMLTreeHelper();
+    private String xsdPath;
+    private String xmlPath;
 
     public FileOpener(){
 
@@ -29,6 +31,7 @@ public class FileOpener {
 
         if(this.xmlFile != null){
             xmlTreeHelper.loadData(this.xmlFile);
+            xsdPath = this.xsdFile.getPath();
             ViewerManager.setTreeItem(xmlTreeHelper.getTreeRootItem());
 
         }
@@ -46,9 +49,25 @@ public class FileOpener {
         this.xsdFile = fileChooser.showOpenDialog(stage);
 
         if(this.xsdFile != null){
+            this.xsdPath = xsdFile.getPath();
             //save to config
         }
 
     }
 
+    public String getXsdPath() {
+        return xsdPath;
+    }
+
+    public File getXsdFile() {
+        return xsdFile;
+    }
+
+    public String getXmlPath() {
+        return xmlPath;
+    }
+
+    public File getXmlFile() {
+        return xmlFile;
+    }
 }
