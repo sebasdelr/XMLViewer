@@ -32,19 +32,24 @@ import java.util.List;
 public class XMLValidator {
 
     public static List exceptions = new LinkedList();
-    private String results;
+    private String results = "";
+    private String xmlFilename;
     private int errorNum;
+    private boolean flag = false;
+
 
 
     public XMLValidator(){
 
 
+
+
     }
 
-    public void initValidator(String schemaFilename) throws Exception{
+    public void initValidator(String schemaFilename, String xmlFilename) throws Exception{
 
        // String schemaFilename = "sample/xmlviewer/resources/test.xsd";
-        String xmlFilename = "sample/xmlviewer/resources/note.xml";
+        //String xmlFilename = "sample/xmlviewer/resources/note.xml";
 
 
         Document document = this.loadXml(xmlFilename);
@@ -71,12 +76,17 @@ public class XMLValidator {
 
     public void validate(Document document, String schemaFile)
             throws SAXException, IOException {
+
         XSDErrorHandler xsdErrorHandler = new XSDErrorHandler();
 
         SchemaFactory factory = SchemaFactory.newInstance(
                 XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        Schema schema = factory.newSchema(
-                new StreamSource(getInputStream(schemaFile)));
+
+
+//        Schema schema = factory.newSchema(
+//                new StreamSource(getInputStream(schemaFile)));
+
+        Schema schema = factory.newSchema(new File(schemaFile));
 
         Validator validator = schema.newValidator();
         validator.setErrorHandler(xsdErrorHandler);
@@ -91,7 +101,7 @@ public class XMLValidator {
             String message = tempException.getMessage();
 
             System.out.println("[ Err ] line nr: " + lineNumber + " column nr: " + columnNumber + " message: " + message);
-            this.results+="[ Err ] line nr: " + lineNumber + " column nr: " + columnNumber + " message: " + message;
+            this.results+="[ Err ] line nr: " + lineNumber + " column nr: " + columnNumber + " message: " + message + "\n";
 
         }
 
@@ -100,6 +110,7 @@ public class XMLValidator {
 
         if(xsdErrorHandler.getExceptions().size() == 0){
             this.results = "Validation is successful";
+            this.flag = true;
         }
 
         errorNum = xsdErrorHandler.getExceptions().size();
@@ -114,13 +125,16 @@ public class XMLValidator {
     }
 
     private Document loadXml(String xmlToValidate) throws Exception {
+
+        File file = new File(xmlToValidate);
         DocumentBuilder builder = createDocumentBuilder();
-        return builder.parse(getInputStream(xmlToValidate));
+        return builder.parse(file);
     }
 
-    private InputStream getInputStream(String filename) {
-        return getClass().getClassLoader().getResourceAsStream(filename);
-    }
+//    private InputStream getInputStream(String filename) {
+//        System.out.println(getClass().getClassLoader().getResourceAsStream(filename));
+//        return getClass().getClassLoader().getResourceAsStream(filename);
+//    }
 
     public String getResults() {
         return results;
@@ -128,5 +142,9 @@ public class XMLValidator {
 
     public int getErrorNum() {
         return errorNum;
+    }
+
+    public boolean isFlag() {
+        return flag;
     }
 }

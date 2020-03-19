@@ -31,7 +31,7 @@ public class FileOpener {
 
         if(this.xmlFile != null){
             xmlTreeHelper.loadData(this.xmlFile);
-            xsdPath = this.xsdFile.getPath();
+            xmlPath = this.xmlFile.getPath();
             ViewerManager.setTreeItem(xmlTreeHelper.getTreeRootItem());
 
         }

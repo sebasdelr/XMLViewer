@@ -44,13 +44,14 @@ public class Checker {
         HBox xml = new HBox();
         VBox layout= new VBox();
 
-        Scene scene1= new Scene(layout, 400, 250);
+        Scene scene1= new Scene(layout, 500, 400);
 
         //Buttons
         Button loadXML = new Button("Load XML");
         Button changeXSD = new Button("Change XSD");
         Button runChecker = new Button("Run Checker");
         Button openViewer = new Button("Open Viewer");
+        runChecker.setDisable(true);
         openViewer.setDisable(true);
 
         CheckHelper checkHelper = new CheckHelper();
@@ -60,12 +61,13 @@ public class Checker {
         CheckBox subCoord = new CheckBox();
 
         //Labels
-        Label instruction = new Label("Set settings:");
+        Label instruction = new Label("Settings:");
         Label label1 = new Label("Office coordinates");
         Label label2 = new Label("Subdivision coordinates");
-        Label currentXML = new Label("No XML file has been loaded yet.");
+        Label currentXML = new Label("Current XML File: ");
         Label currentXSD = new Label("Current XSD File: ");
         Label xsdFileName = new Label(checkHelper.getXsdFileName());
+        Label xmlFileName = new Label("No XML file has been loaded yet.");
 
         TextArea textArea = new TextArea();
 
@@ -80,12 +82,16 @@ public class Checker {
         row2.getChildren().addAll(loadXML, changeXSD, runChecker, openViewer);
         row2.setAlignment(Pos.CENTER);
 
+
         xsd.setSpacing(10);
         xsd.getChildren().addAll(currentXSD, xsdFileName);
 
-        layout.setSpacing(10);
+        xml.setSpacing(10);
+        xml.getChildren().addAll(currentXML, xmlFileName);
+
+        layout.setSpacing(15);
         layout.setPadding(new Insets(10,10,10,10));
-        layout.getChildren().addAll(instruction, row1, row2, xsd, currentXML, textArea);
+        layout.getChildren().addAll(instruction, row2, xsd, xml, textArea);
 
 
 
@@ -111,7 +117,9 @@ public class Checker {
             public void handle(ActionEvent event) {
                 fileOpener.xmlOpener(popupwindow);
                 if(fileOpener.getXmlFile() != null){
-                    currentXML.setText("Current XML file: " + fileOpener.getXmlPath());
+                    xmlFileName.setText(fileOpener.getXmlPath());
+                    runChecker.setDisable(false);
+
                 }
 
 
@@ -139,9 +147,10 @@ public class Checker {
                 String file2 = "test.xsd";
 
                 try {
-                    xmlValidator.initValidator(checkHelper.getXsdFileName());
+                    xmlValidator.initValidator(checkHelper.getXsdFileName(), fileOpener.getXmlPath());
+                    System.out.println(checkHelper.getXsdFileName());
                     textArea.setText(xmlValidator.getResults());
-                    if(xmlValidator.getErrorNum() == 0){
+                    if(xmlValidator.isFlag()){
                         openViewer.setDisable(false);
 
                     }
@@ -171,7 +180,7 @@ public class Checker {
 
 
         popupwindow.initModality(Modality.APPLICATION_MODAL);
-        popupwindow.setTitle("This is a pop up window");
+        popupwindow.setTitle("Validate XML First");
         popupwindow.setScene(scene1);
 
         popupwindow.showAndWait();
