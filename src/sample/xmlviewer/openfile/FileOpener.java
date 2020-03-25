@@ -30,9 +30,9 @@ public class FileOpener {
         this.xmlFile = fileChooser.showOpenDialog(stage);
 
         if(this.xmlFile != null){
-            xmlTreeHelper.loadData(this.xmlFile);
+            //xmlTreeHelper.loadData(this.xmlFile);
             xmlPath = this.xmlFile.getPath();
-            ViewerManager.setTreeItem(xmlTreeHelper.getTreeRootItem());
+            //ViewerManager.setTreeItem(xmlTreeHelper.getTreeRootItem());
 
         }
 

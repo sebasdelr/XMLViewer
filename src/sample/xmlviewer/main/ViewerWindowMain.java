@@ -36,7 +36,7 @@ public class ViewerWindowMain extends Application {
 
 
         //Set scene
-        Scene scene = new Scene(mainVBox, 530,400);
+        Scene scene = new Scene(mainVBox, 550,400);
 
         stage.setTitle("XML Viewer");
         stage.setScene(scene);

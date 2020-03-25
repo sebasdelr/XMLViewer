@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.xmlviewer.data.ViewerManager;
 import sample.xmlviewer.helpers.CheckHelper;
+import sample.xmlviewer.helpers.XMLTreeHelper;
 import sample.xmlviewer.helpers.XMLValidator;
 import sample.xmlviewer.openfile.FileOpener;
 
@@ -24,6 +25,8 @@ public class Checker {
 
     TextArea textArea = new TextArea();
     private static Stage stage;
+
+
 
     public Checker(Stage stage) {
         this.stage = stage;
@@ -36,6 +39,7 @@ public class Checker {
         Stage popupwindow=new Stage();
         FileOpener fileOpener = new FileOpener();
         XMLValidator xmlValidator = new XMLValidator();
+        XMLTreeHelper xmlTreeHelper = new XMLTreeHelper();
 
         //Boxes
         HBox row1 = new HBox();
@@ -152,6 +156,9 @@ public class Checker {
                     textArea.setText(xmlValidator.getResults());
                     if(xmlValidator.isFlag()){
                         openViewer.setDisable(false);
+                        xmlTreeHelper.loadData(fileOpener.getXmlFile());
+                        //xmlPath = this.xmlFile.getPath();
+                        ViewerManager.setTreeItem(xmlTreeHelper.getTreeRootItem());
 
                     }
                 }
