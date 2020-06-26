@@ -7,10 +7,15 @@ import javafx.scene.image.ImageView;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class XMLTreeHelper {
@@ -26,6 +31,8 @@ public class XMLTreeHelper {
 
 
     public XMLTreeHelper(){
+
+
 
 
     }
@@ -53,6 +60,10 @@ public class XMLTreeHelper {
         }
 
     }
+
+
+
+
 
 
 
@@ -268,6 +279,45 @@ public class XMLTreeHelper {
         fileLoaded = true;
 
     }
+
+//    public ArrayList<TreeItem> nodeList2Tree(org.w3c.dom.Node node){
+//
+//        ArrayList<TreeItem> tempList = new ArrayList<TreeItem>();
+//        NodeList list = node.getChildNodes();
+//
+//        for (int i=0; i<list.getLength(); i++) {
+//            org.w3c.dom.Node childNode = list.item(i);
+//
+//            //node.getNodeType() == Node.ELEMENT_NODE
+//            if(childNode.getNodeType() == org.w3c.dom.Node.ELEMENT_NODE){
+//                String name = childNode.getNodeName();
+//
+//                String nodeText = "";
+//
+//                if(childNode.hasChildNodes() && (childNode.getFirstChild().getNodeType() == org.w3c.dom.Node.TEXT_NODE) && (!childNode.getFirstChild().getTextContent().trim().replaceAll("\\s+", " ").isEmpty())){
+//                    String text = childNode.getFirstChild().getTextContent();
+//                    nodeText = name + ": " + text;
+//                }
+//                else {
+//                    nodeText = name;
+//                }
+//
+//                TreeItem tempItem = new TreeItem(nodeText);
+//                tempItem.getChildren().addAll(nodeList2Tree(childNode));
+//                tempList.add(tempItem);
+//
+//            }
+//
+//
+//
+//
+//        }
+//
+//
+//
+//        return tempList;
+//
+//    }
 
     public String elementText(org.w3c.dom.Node node, String string){
         return ((Element) node).getElementsByTagName(string)

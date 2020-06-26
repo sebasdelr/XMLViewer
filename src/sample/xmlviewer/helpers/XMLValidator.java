@@ -96,8 +96,8 @@ public class XMLValidator {
         for(int i = 0; i < xsdErrorHandler.getExceptions().size(); i++){
 
             SAXParseException tempException = (SAXParseException) xsdErrorHandler.getExceptions().get(i);
-            long lineNumber = tempException.getLineNumber();
-            long columnNumber = tempException.getColumnNumber();
+            int lineNumber = tempException.getLineNumber();
+            int columnNumber = tempException.getColumnNumber();
             String message = tempException.getMessage();
 
             System.out.println("[ Err ] line nr: " + lineNumber + " column nr: " + columnNumber + " message: " + message);
