@@ -66,7 +66,7 @@ public class ContentPanel {
 
     public void setRootItem() {
         if(ViewerManager.getTreeItem() != null){
-            rootItem = ViewerManager.getTreeItem();
+            rootItem.getChildren().addAll(ViewerManager.getTreeItem());
             content.getChildren().clear();
             content.getChildren().addAll(getTreeView(), getRightPane());
 

@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import sample.xmlviewer.main.ViewerWindowMain;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class ViewerManager {
 
@@ -17,7 +18,8 @@ public class ViewerManager {
 //    public static Image planIcon;
 //    public static Image officeIcon;
 
-    private static TreeItem<String> treeItem;
+    //private static TreeItem<String> treeItem;
+    private static ArrayList<TreeItem> treeItem;
     private static ViewerWindowMain windowMain;
 
 
@@ -33,13 +35,23 @@ public class ViewerManager {
         System.out.println("is working");
     }
 
-    public static void setTreeItem(TreeItem<String> item){
+//    public static void setTreeItem(TreeItem<String> item){
+//        treeItem = item;
+//        ViewerWindowMain.contentPanel.setRootItem();
+//
+//    }
+
+    public static void setTreeItem(ArrayList<TreeItem> item){
         treeItem = item;
         ViewerWindowMain.contentPanel.setRootItem();
 
     }
 
-    public static TreeItem<String> getTreeItem() {
+//    public static TreeItem<String> getTreeItem() {
+//        return treeItem;
+//    }
+
+    public static ArrayList<TreeItem> getTreeItem() {
         return treeItem;
     }
 }
