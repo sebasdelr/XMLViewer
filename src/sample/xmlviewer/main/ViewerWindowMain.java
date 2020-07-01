@@ -27,7 +27,7 @@ public class ViewerWindowMain extends Application {
         FooterPanel footerPanel = new FooterPanel();
 
         //Load checker
-        checker.display();
+        //checker.display();
 
 
         //Set main box
