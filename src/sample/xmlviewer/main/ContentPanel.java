@@ -43,6 +43,9 @@ public class ContentPanel {
         rootItem.setExpanded(false);
         treeView.setRoot(rootItem);
 
+        treeView.setPrefWidth(500);
+
+
         return treeView;
 
     }
@@ -68,7 +71,8 @@ public class ContentPanel {
         if(ViewerManager.getTreeItem() != null){
             rootItem.getChildren().addAll(ViewerManager.getTreeItem());
             content.getChildren().clear();
-            content.getChildren().addAll(getTreeView(), getRightPane());
+            //content.getChildren().addAll(getTreeView(), getRightPane());
+            content.getChildren().addAll(getTreeView());
 
             EventHandler<MouseEvent> mouseEventHandle = (MouseEvent event) -> {
                 handleMouseClicked(event);
