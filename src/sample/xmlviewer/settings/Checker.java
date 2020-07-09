@@ -65,7 +65,7 @@ public class Checker {
         CheckBox subCoord = new CheckBox();
 
         //Labels
-        Label instruction = new Label("Settings:");
+        Label instruction = new Label("Change XSD File or Use Current:");
         Label label1 = new Label("Office coordinates");
         Label label2 = new Label("Subdivision coordinates");
         Label currentXML = new Label("Current XML File: ");
@@ -83,7 +83,9 @@ public class Checker {
         row1.setSpacing(10);
         row1.getChildren().addAll(label1, officeCoord, label2, subCoord);
         row2.setSpacing(10);
-        row2.getChildren().addAll(loadXML, changeXSD, runChecker, openViewer);
+        //row2.getChildren().addAll(loadXML, changeXSD, runChecker, openViewer);
+        row2.getChildren().addAll(changeXSD, runChecker);
+
         row2.setAlignment(Pos.CENTER);
 
 
@@ -95,7 +97,9 @@ public class Checker {
 
         layout.setSpacing(15);
         layout.setPadding(new Insets(10,10,10,10));
-        layout.getChildren().addAll(instruction, row2, xsd, xml, textArea);
+        //layout.getChildren().addAll(instruction, row2, xsd, xml, textArea);
+        layout.getChildren().addAll(instruction, row2, xsd, textArea);
+
 
 
 

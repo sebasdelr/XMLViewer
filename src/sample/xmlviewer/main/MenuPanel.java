@@ -25,6 +25,7 @@ public class MenuPanel {
     private void initPanel(){
 
         FileOpener fileOpener = new FileOpener();
+        Checker checker = new Checker(this.stage);
 
         //Checker checker =
 
@@ -69,6 +70,8 @@ public class MenuPanel {
             @Override
             public void handle(ActionEvent event) {
                 //open checker
+                checker.display();
+
             }
         });
 
