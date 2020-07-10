@@ -11,7 +11,7 @@ public class FileOpener {
 
     private File xmlFile;
     private File xsdFile;
-    private XMLTreeHelper xmlTreeHelper = new XMLTreeHelper();
+    //private XMLTreeHelper xmlTreeHelper = new XMLTreeHelper();
     private String xsdPath;
     private String xmlPath;
 

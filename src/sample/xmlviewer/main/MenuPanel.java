@@ -36,8 +36,19 @@ public class MenuPanel {
         MenuItem menuFileChecker = new MenuItem("_Process");
         MenuItem menuFileExit = new MenuItem("_Exit");
 
+
+
+        if(xmlTreeHelper.isFileLoaded()){
+
+            System.out.println("something happened");
+        }
+
         menuMain.getMenus().addAll(menuFile);
         menuFile.getItems().addAll(menuFileOpen, menuFileChecker, menuFileExit);
+
+        menuFileChecker.setDisable(true);
+
+
 
 
         menuFileExit.setOnAction(new EventHandler<ActionEvent>() {
@@ -60,6 +71,7 @@ public class MenuPanel {
                     xmlTreeHelper.loadData(fileOpener.getXmlFile());
                     //xmlPath = this.xmlFile.getPath();
                     ViewerManager.setTreeItem(xmlTreeHelper.getTreeRootItem());
+                    menuFileChecker.setDisable(false);
 
                 }
 

@@ -92,6 +92,8 @@ public class XMLTreeHelper {
 
         treeRootItem = nodeList2Tree(doc);
 
+        fileLoaded = true;
+
 
     }
 
