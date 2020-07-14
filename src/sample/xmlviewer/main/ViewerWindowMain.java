@@ -32,6 +32,8 @@ public class ViewerWindowMain extends Application {
 
         //Set main box
         mainVBox.getChildren().setAll(menuPanel.getMenuMain(), contentPanel.getContent(), footerPanel.getFooter());
+        //mainVBox.getChildren().setAll(menuPanel.getMenuMain(), contentPanel.getContent());
+
         mainVBox.setSpacing(10);
 
 

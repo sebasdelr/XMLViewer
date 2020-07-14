@@ -55,7 +55,7 @@ public class Checker {
         Button changeXSD = new Button("Change XSD");
         Button runChecker = new Button("Run Checker");
         Button openViewer = new Button("Open Viewer");
-        runChecker.setDisable(true);
+        runChecker.setDisable(false);
         openViewer.setDisable(true);
 
         CheckHelper checkHelper = new CheckHelper();
@@ -155,16 +155,16 @@ public class Checker {
                 String file2 = "test.xsd";
 
                 try {
-                    xmlValidator.initValidator(checkHelper.getXsdFileName(), fileOpener.getXmlPath());
+                    xmlValidator.initValidator(checkHelper.getXsdFileName(), ViewerManager.getXmlFile().getAbsolutePath());
                     System.out.println(checkHelper.getXsdFileName());
                     textArea.setText(xmlValidator.getResults());
-                    if(xmlValidator.isFlag()){
-                        openViewer.setDisable(false);
-                        xmlTreeHelper.loadData(fileOpener.getXmlFile());
-                        //xmlPath = this.xmlFile.getPath();
-                        ViewerManager.setTreeItem(xmlTreeHelper.getTreeRootItem());
-
-                    }
+//                    if(xmlValidator.isFlag()){
+//                        openViewer.setDisable(false);
+//                        //xmlTreeHelper.loadData(fileOpener.getXmlFile());
+//                        //xmlPath = this.xmlFile.getPath();
+//                        //ViewerManager.setTreeItem(xmlTreeHelper.getTreeRootItem());
+//
+//                    }
                 }
                 catch (Exception ex){
                     ex.printStackTrace();
@@ -173,20 +173,20 @@ public class Checker {
             }
         });
 
-        openViewer.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                popupwindow.close();
-            }
-        });
-
-
-
-        popupwindow.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we) {
-                System.exit(0);
-            }
-        });
+//        openViewer.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                popupwindow.close();
+//            }
+//        });
+//
+//
+//
+//        popupwindow.setOnCloseRequest(new EventHandler<WindowEvent>() {
+//            public void handle(WindowEvent we) {
+//                System.exit(0);
+//            }
+//        });
 
 
 

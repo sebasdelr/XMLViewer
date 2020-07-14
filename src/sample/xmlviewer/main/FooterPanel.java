@@ -9,16 +9,18 @@ public class FooterPanel {
     private HBox footer = new HBox();
 
     public FooterPanel(){
-        initPanel(10);
-
-    }
-
-    private void initPanel(int number){
-        footer.getChildren().addAll(new Label("Number of Subdivisions: " + number));
+        //initPanel(10);
+        footer.getChildren().addAll(new Label(""));
         footer.setPadding(new Insets(0,0,10,10));
 
-
     }
+
+//    private void initPanel(int number){
+//        footer.getChildren().addAll(new Label("Number of Subdivisions: " + number));
+//        footer.setPadding(new Insets(0,0,10,10));
+//
+//
+//    }
 
     public HBox getFooter() {
         return footer;

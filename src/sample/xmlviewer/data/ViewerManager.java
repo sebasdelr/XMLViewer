@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ViewerManager {
 
-//    private static File xmlFile;
+    private static File xmlFile;
 //    private static File xdsFile;
 //
 //    public static Image builderIcon;
@@ -47,7 +47,15 @@ public class ViewerManager {
 
     }
 
-//    public static TreeItem<String> getTreeItem() {
+    public static File getXmlFile() {
+        return xmlFile;
+    }
+
+    public static void setXmlFile(File xmlFile) {
+        ViewerManager.xmlFile = xmlFile;
+    }
+
+    //    public static TreeItem<String> getTreeItem() {
 //        return treeItem;
 //    }
 
