@@ -52,6 +52,7 @@ public class ViewerManager {
     }
 
     public static void setXmlFile(File xmlFile) {
+        //System.out.println("maybes heresz");
         ViewerManager.xmlFile = xmlFile;
     }
 

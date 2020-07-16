@@ -1,13 +1,17 @@
 package sample.xmlviewer.helpers;
 
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import jdk.nashorn.internal.runtime.ParserException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXNotSupportedException;
+import org.xml.sax.SAXParseException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -60,27 +64,56 @@ public class XMLTreeHelper {
 //            return null;
 //        }
 
+
+
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         dbf.setValidating(false);
         DocumentBuilder db = null;
         try {
+            System.out.println("db here");
             db = dbf.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
+
         }
 
+
         Document doc = null;
+
+        System.out.println("step tep");
         try {
+            System.out.println("trying");
             doc = db.parse(new FileInputStream(new File(String.valueOf(file))));
+            System.out.println("nope");
         } catch (SAXException e) {
-            e.printStackTrace();
+            System.out.println("some error to save your file");
+            //e.printStackTrace();
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("There seems to be an error with your file. Make sure you open a valid one.");
+
+            alert.showAndWait();
+
+            return null;
+
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            return null;
+
         }
+
+        catch (IllegalArgumentException e){
+            System.out.println("blah");
+        }
+
 
         //below method adds items to the product list
 
         //products = nodeList2Tree(doc);
+
+        System.out.println("still getting here");
 
         return doc;
 
@@ -88,16 +121,32 @@ public class XMLTreeHelper {
 
     public void loadData(File file){
 
+        System.out.println("file loading to document");
+
         Document doc = document(file);
 
-        treeRootItem = nodeList2Tree(doc);
 
-        fileLoaded = true;
+        System.out.println("we got to here");
+
+        if(doc != null) {
+
+            treeRootItem = nodeList2Tree(doc);
+
+            fileLoaded = true;
+
+        }
+        else {
+            fileLoaded = false;
+        }
+
+
 
 
     }
 
     public ArrayList<TreeItem> nodeList2Tree(org.w3c.dom.Node node){
+
+        System.out.println("hello");
 
         ArrayList<TreeItem> tempList = new ArrayList<TreeItem>();
         NodeList list = node.getChildNodes();

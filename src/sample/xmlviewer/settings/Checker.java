@@ -76,6 +76,7 @@ public class Checker {
         TextArea textArea = new TextArea();
 
         textArea.setEditable(false);
+        textArea.setPrefRowCount(50);
 
         officeCoord.setSelected((checkHelper.getOfficeCoord()!= "0"));
 
@@ -191,7 +192,7 @@ public class Checker {
 
 
         popupwindow.initModality(Modality.APPLICATION_MODAL);
-        popupwindow.setTitle("Validate XML First");
+        popupwindow.setTitle("XML Validation");
         popupwindow.setScene(scene1);
 
         popupwindow.showAndWait();

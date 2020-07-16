@@ -68,11 +68,16 @@ public class MenuPanel {
                 if(fileOpener.getXmlFile() != null){
 //                    xmlFileName.setText(fileOpener.getXmlPath());
 //                    runChecker.setDisable(false);
+                    System.out.println("this ran");
                     xmlTreeHelper.loadData(fileOpener.getXmlFile());
+                    System.out.println("this ran as well");
                     //xmlPath = this.xmlFile.getPath();
-                    ViewerManager.setTreeItem(xmlTreeHelper.getTreeRootItem());
-                    ViewerManager.setXmlFile(fileOpener.getXmlFile());
-                    menuFileChecker.setDisable(false);
+                    if(xmlTreeHelper.isFileLoaded()){
+                        ViewerManager.setTreeItem(xmlTreeHelper.getTreeRootItem());
+                        ViewerManager.setXmlFile(fileOpener.getXmlFile());
+                        menuFileChecker.setDisable(false);
+                    }
+
 
                 }
 

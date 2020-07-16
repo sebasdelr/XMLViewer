@@ -20,7 +20,7 @@ public class ContentPanel {
     private TextField textField = new TextField();
     private TextArea textArea = new TextArea();
 
-    private TreeItem rootItem = new TreeItem("Builder");
+    private TreeItem rootItem = new TreeItem("File");
     TreeView treeView = new TreeView();
 
     private EmptyContentPanel emptyContentPanel = new EmptyContentPanel();
@@ -44,6 +44,8 @@ public class ContentPanel {
         treeView.setRoot(rootItem);
 
         treeView.setPrefWidth(500);
+
+        treeView.setShowRoot(false);
 
 
         return treeView;
