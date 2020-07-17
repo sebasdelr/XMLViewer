@@ -6,25 +6,11 @@
       <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/data/ViewerManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/data/ViewerManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/helpers/XMLTreeHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/helpers/XMLTreeHelper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/main/ContentPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/main/ContentPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/main/MenuPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/main/MenuPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/main/MenuPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/main/MenuPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/main/MenuPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/main/MenuPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/resources/note.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/resources/test.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/settings/Checker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/resources/house.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/XMLViewer/sample/xmlviewer/resources/monitor.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/data/ViewerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/xmlviewer/data/ViewerManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/helpers/XMLTreeHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/xmlviewer/helpers/XMLTreeHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/main/ContentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/xmlviewer/main/ContentPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/main/MenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/xmlviewer/main/MenuPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/resources/house.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/resources/monitor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/resources/note.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/resources/test.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/settings/Checker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/xmlviewer/settings/Checker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/xmlviewer/resources/icons8-file-16.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/xmlviewer/resources/file.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +99,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="F:/Downloads/SpeedSouls-Save-Organizer-v.1.4.1" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -342,26 +328,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594734545068" />
-    <state width="1877" height="278" key="GridCell.Tab.0.bottom" timestamp="1594909850012">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1595002253944">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="290" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594848327903" />
+    <state x="740" y="274" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595002253944" />
+    <state width="1877" height="290" key="GridCell.Tab.0.bottom" timestamp="1595003136948">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="290" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595003136948" />
     <state width="1877" height="278" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1594909850012" />
-    <state width="1877" height="278" key="GridCell.Tab.0.center" timestamp="1594909850012">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="290" key="GridCell.Tab.0.center" timestamp="1595003136948">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="290" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594848327903" />
+    <state width="1877" height="290" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595003136948" />
     <state width="1877" height="278" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1594909850012" />
-    <state width="1877" height="278" key="GridCell.Tab.0.left" timestamp="1594909850012">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="290" key="GridCell.Tab.0.left" timestamp="1595003136948">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="290" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594848327903" />
+    <state width="1877" height="290" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595003136948" />
     <state width="1877" height="278" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1594909850012" />
-    <state width="1877" height="278" key="GridCell.Tab.0.right" timestamp="1594909850012">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="290" key="GridCell.Tab.0.right" timestamp="1595003136948">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="290" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594848327903" />
+    <state width="1877" height="290" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595003136948" />
     <state width="1877" height="278" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1594909850012" />
+    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1595002171719">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="119" width="585" height="801" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595002171719" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1593442444896">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

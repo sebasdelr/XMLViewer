@@ -27,7 +27,7 @@ public class XMLTreeHelper {
     private final String RESOURCE_PATH = "/sample/xmlviewer/resources/";
 
     //private TreeItem<String> treeRootItem = null;
-    private ArrayList<TreeItem> treeRootItem = null;
+    private ArrayList<TreeItem<String>> treeRootItem = null;
     private int subdivNum = 0;
 
     private boolean fileLoaded = false;
@@ -144,11 +144,9 @@ public class XMLTreeHelper {
 
     }
 
-    public ArrayList<TreeItem> nodeList2Tree(org.w3c.dom.Node node){
+    public ArrayList<TreeItem<String>> nodeList2Tree(org.w3c.dom.Node node){
 
-        System.out.println("hello");
-
-        ArrayList<TreeItem> tempList = new ArrayList<TreeItem>();
+        ArrayList<TreeItem<String>> tempList = new ArrayList<TreeItem<String>>();
         NodeList list = node.getChildNodes();
 
         for (int i=0; i<list.getLength(); i++) {
@@ -160,15 +158,19 @@ public class XMLTreeHelper {
 
                 String nodeText = "";
 
+                Node rootIcon = null;
+
                 if(childNode.hasChildNodes() && (childNode.getFirstChild().getNodeType() == org.w3c.dom.Node.TEXT_NODE) && (!childNode.getFirstChild().getTextContent().trim().replaceAll("\\s+", " ").isEmpty())){
+                    rootIcon =  new ImageView(new Image(getClass().getResourceAsStream("/sample/xmlviewer/resources/file.png")));
                     String text = childNode.getFirstChild().getTextContent();
                     nodeText = name + ": " + text;
                 }
                 else {
+                    rootIcon =  new ImageView(new Image(getClass().getResourceAsStream("/sample/xmlviewer/resources/folder2.png")));
                     nodeText = name;
                 }
 
-                TreeItem tempItem = new TreeItem(nodeText);
+                TreeItem<String> tempItem = new TreeItem<>(nodeText, rootIcon);
                 tempItem.getChildren().addAll(nodeList2Tree(childNode));
                 tempList.add(tempItem);
 
@@ -200,7 +202,7 @@ public class XMLTreeHelper {
 //        return treeRootItem;
 //    }
 
-    public ArrayList<TreeItem> getTreeRootItem() {
+    public ArrayList<TreeItem<String>> getTreeRootItem() {
         return treeRootItem;
     }
 

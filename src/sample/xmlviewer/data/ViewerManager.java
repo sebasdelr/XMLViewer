@@ -19,7 +19,7 @@ public class ViewerManager {
 //    public static Image officeIcon;
 
     //private static TreeItem<String> treeItem;
-    private static ArrayList<TreeItem> treeItem;
+    private static ArrayList<TreeItem<String>> treeItem;
     private static ViewerWindowMain windowMain;
 
 
@@ -41,7 +41,7 @@ public class ViewerManager {
 //
 //    }
 
-    public static void setTreeItem(ArrayList<TreeItem> item){
+    public static void setTreeItem(ArrayList<TreeItem<String>> item){
         treeItem = item;
         ViewerWindowMain.contentPanel.setRootItem();
 
@@ -60,7 +60,7 @@ public class ViewerManager {
 //        return treeItem;
 //    }
 
-    public static ArrayList<TreeItem> getTreeItem() {
+    public static ArrayList<TreeItem<String>> getTreeItem() {
         return treeItem;
     }
 }
