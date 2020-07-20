@@ -32,39 +32,15 @@ public class XMLTreeHelper {
 
     private boolean fileLoaded = false;
 
-
-
+    private final Image folderIcon = new Image(getClass().getResourceAsStream(RESOURCE_PATH+"folder2.png"));
+    private final Image fileIcon = new Image(getClass().getResourceAsStream(RESOURCE_PATH+"file.png"));
 
     public XMLTreeHelper(){
 
-
-
-
     }
-    //Create classes for each element?
 
-    //Create a separate list
-
-    //Create a method for opening a file
-
-    // This method creates an ArrayList of TreeItems (Products)
 
     private Document document (File file){
-
-//        try{
-//
-//            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-//            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-//            Document doc = dBuilder.parse(file);
-//            return doc;
-//        }
-//
-//        catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-
-
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         dbf.setValidating(false);
@@ -161,12 +137,12 @@ public class XMLTreeHelper {
                 Node rootIcon = null;
 
                 if(childNode.hasChildNodes() && (childNode.getFirstChild().getNodeType() == org.w3c.dom.Node.TEXT_NODE) && (!childNode.getFirstChild().getTextContent().trim().replaceAll("\\s+", " ").isEmpty())){
-                    rootIcon =  new ImageView(new Image(getClass().getResourceAsStream("/sample/xmlviewer/resources/file.png")));
+                    rootIcon =  new ImageView(fileIcon);
                     String text = childNode.getFirstChild().getTextContent();
                     nodeText = name + ": " + text;
                 }
                 else {
-                    rootIcon =  new ImageView(new Image(getClass().getResourceAsStream("/sample/xmlviewer/resources/folder2.png")));
+                    rootIcon =  new ImageView(folderIcon);
                     nodeText = name;
                 }
 
@@ -186,21 +162,6 @@ public class XMLTreeHelper {
         return tempList;
 
     }
-
-    public String elementText(org.w3c.dom.Node node, String string){
-        return ((Element) node).getElementsByTagName(string)
-                .item(0)
-                .getTextContent();
-    }
-
-    public org.w3c.dom.Node nodeGetter (NodeList nodeList, int index){
-        org.w3c.dom.Node node = nodeList.item(index) ;
-        return node;
-    }
-
-//    public TreeItem<String> getTreeRootItem() {
-//        return treeRootItem;
-//    }
 
     public ArrayList<TreeItem<String>> getTreeRootItem() {
         return treeRootItem;
