@@ -67,6 +67,7 @@ public class MenuPanel {
                 fileOpener.xmlOpener(stage);
                 if(fileOpener.getXmlFile() != null){
 //                    xmlFileName.setText(fileOpener.getXmlPath());
+                    ViewerManager.setXmlFileName(fileOpener.getXmlPath());
 //                    runChecker.setDisable(false);
                     System.out.println("this ran");
                     xmlTreeHelper.loadData(fileOpener.getXmlFile());

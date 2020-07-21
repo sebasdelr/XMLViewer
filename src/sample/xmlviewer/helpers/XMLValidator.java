@@ -52,11 +52,13 @@ public class XMLValidator {
         //String xmlFilename = "sample/xmlviewer/resources/note.xml";
 
 
-        Document document = this.loadXml(xmlFilename);
+        //Document document = this.loadXml(xmlFilename);
+        File file = new File(xmlFilename);
 
         try {
 
-            this.validate(document, schemaFilename);
+            //this.validate(document, schemaFilename);
+            this.validate(file, schemaFilename);
 
 
             System.out.println("Validation is successful");
@@ -74,7 +76,9 @@ public class XMLValidator {
     }
 
 
-    public void validate(Document document, String schemaFile)
+    //public void validate(Document document, String schemaFile)
+    public void validate(File file, String schemaFile)
+
             throws SAXException, IOException {
 
         XSDErrorHandler xsdErrorHandler = new XSDErrorHandler();
@@ -91,7 +95,8 @@ public class XMLValidator {
         Validator validator = schema.newValidator();
         validator.setErrorHandler(xsdErrorHandler);
 
-        validator.validate(new DOMSource(document));
+        //validator.validate(new DOMSource(document));
+        validator.validate(new StreamSource(file));
 
         for(int i = 0; i < xsdErrorHandler.getExceptions().size(); i++){
 
@@ -146,5 +151,13 @@ public class XMLValidator {
 
     public boolean isFlag() {
         return flag;
+    }
+
+    public String getXmlFilename() {
+        return xmlFilename;
+    }
+
+    public void setXmlFilename(String xmlFilename) {
+        this.xmlFilename = xmlFilename;
     }
 }

@@ -12,6 +12,7 @@ public class ViewerWindowMain extends Application {
     //Main VBox
     private VBox mainVBox = new VBox();
     public static ContentPanel contentPanel = new ContentPanel();
+    public static FooterPanel footerPanel = new FooterPanel();
 
     public static void main(String[] args)
     {
@@ -24,7 +25,7 @@ public class ViewerWindowMain extends Application {
         //Panels and pop up
         Checker checker = new Checker(stage);
         MenuPanel menuPanel = new MenuPanel(stage);
-        FooterPanel footerPanel = new FooterPanel();
+        //FooterPanel footerPanel = new FooterPanel();
 
         //Load checker
         //checker.display();

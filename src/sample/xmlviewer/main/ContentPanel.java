@@ -43,7 +43,7 @@ public class ContentPanel {
         rootItem.setExpanded(false);
         treeView.setRoot(rootItem);
 
-        treeView.setPrefWidth(500);
+        treeView.setPrefWidth(530);
 
         treeView.setShowRoot(false);
 
@@ -64,7 +64,7 @@ public class ContentPanel {
         hbox.setSpacing(10);
 
         vBox.getChildren().addAll(hbox,new Label("Message Log:"), textArea);
-        vBox.setSpacing(20);
+        vBox.setSpacing(10);
 
         return vBox;
     }
@@ -98,28 +98,7 @@ public class ContentPanel {
         this.textArea.setText(msg);
     }
 
-//    private void setContext(String type){
-//
-//
-//        switch (type){
-//            case "office":
-//                this.contextBox.getChildren().clear();
-//                this.contextBox.setSpacing(10);
-//                this.contextBox.getChildren().addAll(new Label("Address:"), textArea);
-//                break;
-//
-//            default:
-//                this.contextBox.getChildren().clear();
-//                break;
-//
-//
-//        }
-//
-//
-//
-//
-//
-//    }
+
 
     private void handleMouseClicked(MouseEvent event) {
         Node node = event.getPickResult().getIntersectedNode();

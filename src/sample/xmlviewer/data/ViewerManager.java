@@ -10,6 +10,8 @@ import java.util.ArrayList;
 public class ViewerManager {
 
     private static File xmlFile;
+
+    private static String xmlFileName;
 //    private static File xdsFile;
 //
 //    public static Image builderIcon;
@@ -62,5 +64,14 @@ public class ViewerManager {
 
     public static ArrayList<TreeItem<String>> getTreeItem() {
         return treeItem;
+    }
+
+    public static String getXmlFileName() {
+        return xmlFileName;
+    }
+
+    public static void setXmlFileName(String xmlFileName) {
+        ViewerManager.xmlFileName = xmlFileName;
+        ViewerWindowMain.footerPanel.setLabel(xmlFileName);
     }
 }
