@@ -9,10 +9,8 @@ public class FooterPanel {
 
     private HBox footer = new HBox();
 
-    private String fileLabel;
 
     public FooterPanel(){
-        //initPanel(10);
         footer.getChildren().addAll(new Label(""));
         footer.setPadding(new Insets(0,0,10,10));
 
@@ -21,7 +19,6 @@ public class FooterPanel {
     public void setLabel(String filename){
         footer.getChildren().addAll(new Label("File name: " + filename));
         footer.setPadding(new Insets(0,0,10,10));
-
 
     }
 

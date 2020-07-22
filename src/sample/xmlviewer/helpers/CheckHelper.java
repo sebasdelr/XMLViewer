@@ -10,15 +10,13 @@ import java.util.Scanner;
 import static java.lang.Integer.parseInt;
 
 public class CheckHelper {
-    private boolean officeCoord;
-    private boolean subCoord;
+
     private FileInputStream inLines = null;
     private FileOutputStream outLines = null;
     private Scanner scannerLines = null;
     private PrintWriter printWriter = null;
     private String[] settingFlags = {"0","0"};
     final private String CONFIGINI = "config.ini";
-    //private List<String> settings = null;
     private String xsdFileName;
 
     public CheckHelper(){
@@ -102,17 +100,17 @@ public class CheckHelper {
         this.settingFlags[0] = flag;
     }
 
-    public void setSubCoord(String flag) {
-        this.settingFlags[1] = flag;
-    }
+//    public void setSubCoord(String flag) {
+//        this.settingFlags[1] = flag;
+//    }
 
     public String getOfficeCoord() {
         return this.settingFlags[0];
     }
 
-    public String getSubCoord() {
-        return this.settingFlags[1];
-    }
+//    public String getSubCoord() {
+//        return this.settingFlags[1];
+//    }
 
     public String getXsdFileName() {
         return xsdFileName;

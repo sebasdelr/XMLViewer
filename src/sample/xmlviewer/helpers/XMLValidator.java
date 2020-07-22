@@ -31,9 +31,7 @@ import java.util.List;
 
 public class XMLValidator {
 
-    public static List exceptions = new LinkedList();
     private String results = "";
-    private String xmlFilename;
     private int errorNum;
     private boolean flag = false;
 
@@ -41,42 +39,27 @@ public class XMLValidator {
 
     public XMLValidator(){
 
-
-
-
     }
 
     public void initValidator(String schemaFilename, String xmlFilename) throws Exception{
 
-       // String schemaFilename = "sample/xmlviewer/resources/test.xsd";
-        //String xmlFilename = "sample/xmlviewer/resources/note.xml";
 
-
-        //Document document = this.loadXml(xmlFilename);
         File file = new File(xmlFilename);
 
         try {
 
-            //this.validate(document, schemaFilename);
             this.validate(file, schemaFilename);
-
-
             System.out.println("Validation is successful");
-
 
         } catch (SAXException e) {
 
             System.out.println("Message: " + e.getMessage());
 
-
         }
-
-
 
     }
 
 
-    //public void validate(Document document, String schemaFile)
     public void validate(File file, String schemaFile)
 
             throws SAXException, IOException {
@@ -87,15 +70,11 @@ public class XMLValidator {
                 XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
 
-//        Schema schema = factory.newSchema(
-//                new StreamSource(getInputStream(schemaFile)));
-
         Schema schema = factory.newSchema(new File(schemaFile));
 
         Validator validator = schema.newValidator();
         validator.setErrorHandler(xsdErrorHandler);
 
-        //validator.validate(new DOMSource(document));
         validator.validate(new StreamSource(file));
 
         for(int i = 0; i < xsdErrorHandler.getExceptions().size(); i++){
@@ -121,43 +100,9 @@ public class XMLValidator {
         errorNum = xsdErrorHandler.getExceptions().size();
     }
 
-    private DocumentBuilder createDocumentBuilder()
-            throws ParserConfigurationException {
-        DocumentBuilderFactory builderFactory
-                = DocumentBuilderFactory.newInstance();
-        builderFactory.setNamespaceAware(true);
-        return builderFactory.newDocumentBuilder();
-    }
-
-    private Document loadXml(String xmlToValidate) throws Exception {
-
-        File file = new File(xmlToValidate);
-        DocumentBuilder builder = createDocumentBuilder();
-        return builder.parse(file);
-    }
-
-//    private InputStream getInputStream(String filename) {
-//        System.out.println(getClass().getClassLoader().getResourceAsStream(filename));
-//        return getClass().getClassLoader().getResourceAsStream(filename);
-//    }
-
     public String getResults() {
         return results;
     }
 
-    public int getErrorNum() {
-        return errorNum;
-    }
 
-    public boolean isFlag() {
-        return flag;
-    }
-
-    public String getXmlFilename() {
-        return xmlFilename;
-    }
-
-    public void setXmlFilename(String xmlFilename) {
-        this.xmlFilename = xmlFilename;
-    }
 }

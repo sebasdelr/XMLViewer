@@ -32,12 +32,6 @@ public class XSDErrorHandler implements ErrorHandler {
         //System.out.println("happens");
     }
 
-//    private String handleMessage(String level, SAXParseException exception) throws SAXException {
-//        int lineNumber = exception.getLineNumber();
-//        int columnNumber = exception.getColumnNumber();
-//        String message = exception.getMessage();
-//        throw new SAXException("[" + level + "] line nr: " + lineNumber + " column nr: " + columnNumber + " message: " + message);
-//    }
 
     public static List getExceptions() {
         return exceptions;

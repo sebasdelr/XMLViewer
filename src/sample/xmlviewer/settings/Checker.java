@@ -156,16 +156,10 @@ public class Checker {
                 String file2 = "test.xsd";
 
                 try {
-                    xmlValidator.initValidator(checkHelper.getXsdFileName(), ViewerManager.getXmlFile().getAbsolutePath());
+                    xmlValidator.initValidator(checkHelper.getXsdFileName(), ViewerManager.getXmlFilePath());
                     System.out.println(checkHelper.getXsdFileName());
                     textArea.setText(xmlValidator.getResults());
-//                    if(xmlValidator.isFlag()){
-//                        openViewer.setDisable(false);
-//                        //xmlTreeHelper.loadData(fileOpener.getXmlFile());
-//                        //xmlPath = this.xmlFile.getPath();
-//                        //ViewerManager.setTreeItem(xmlTreeHelper.getTreeRootItem());
-//
-//                    }
+
                 }
                 catch (Exception ex){
                     ex.printStackTrace();

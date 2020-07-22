@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import sample.xmlviewer.settings.Checker;
 
 
 public class ViewerWindowMain extends Application {
@@ -23,17 +22,10 @@ public class ViewerWindowMain extends Application {
     public void start(Stage stage){
 
         //Panels and pop up
-        Checker checker = new Checker(stage);
+
         MenuPanel menuPanel = new MenuPanel(stage);
-        //FooterPanel footerPanel = new FooterPanel();
 
-        //Load checker
-        //checker.display();
-
-
-        //Set main box
         mainVBox.getChildren().setAll(menuPanel.getMenuMain(), contentPanel.getContent(), footerPanel.getFooter());
-        //mainVBox.getChildren().setAll(menuPanel.getMenuMain(), contentPanel.getContent());
 
         mainVBox.setSpacing(10);
 
