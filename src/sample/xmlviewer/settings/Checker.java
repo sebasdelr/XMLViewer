@@ -13,25 +13,18 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import sample.xmlviewer.data.ViewerManager;
 import sample.xmlviewer.helpers.CheckHelper;
-import sample.xmlviewer.helpers.XMLTreeHelper;
 import sample.xmlviewer.helpers.XMLValidator;
 import sample.xmlviewer.openfile.FileOpener;
 
 
 public class Checker {
 
-    TextArea textArea = new TextArea();
     private static Stage stage;
-
-
-
     public Checker(Stage stage) {
         this.stage = stage;
     }
-
 
     public static void display()
     {
@@ -39,111 +32,64 @@ public class Checker {
         Stage popupwindow=new Stage();
         FileOpener fileOpener = new FileOpener();
         XMLValidator xmlValidator = new XMLValidator();
-        XMLTreeHelper xmlTreeHelper = new XMLTreeHelper();
 
         //Boxes
-        HBox row1 = new HBox();
-        HBox row2 = new HBox();
+        HBox row = new HBox();
         HBox xsd = new HBox();
-        HBox xml = new HBox();
         VBox layout= new VBox();
 
         Scene scene1= new Scene(layout, 500, 400);
 
         //Buttons
-        Button loadXML = new Button("Load XML");
         Button changeXSD = new Button("Change XSD");
         Button runChecker = new Button("Run Checker");
-        Button openViewer = new Button("Open Viewer");
-        runChecker.setDisable(false);
-        openViewer.setDisable(true);
+
+        runChecker.setDisable(true);
 
         CheckHelper checkHelper = new CheckHelper();
 
-        //Checkboxes
-        CheckBox officeCoord = new CheckBox();
-        CheckBox subCoord = new CheckBox();
+        if(ViewerManager.getXsdFilePath() != null){
+            runChecker.setDisable(false);
+        }
+        
 
         //Labels
         Label instruction = new Label("Change XSD File or Use Current:");
-        Label label1 = new Label("Office coordinates");
-        Label label2 = new Label("Subdivision coordinates");
-        Label currentXML = new Label("Current XML File: ");
         Label currentXSD = new Label("Current XSD File: ");
-        Label xsdFileName = new Label(checkHelper.getXsdFileName());
-        Label xmlFileName = new Label("No XML file has been loaded yet.");
+        Label xsdFileName = new Label(ViewerManager.getXsdFilePath());
 
         TextArea textArea = new TextArea();
 
         textArea.setEditable(false);
         textArea.setPrefRowCount(50);
+        
+        row.setSpacing(10);
+        row.getChildren().addAll(changeXSD, runChecker);
 
-        officeCoord.setSelected((checkHelper.getOfficeCoord()!= "0"));
-
-
-        row1.setSpacing(10);
-        row1.getChildren().addAll(label1, officeCoord, label2, subCoord);
-        row2.setSpacing(10);
-        //row2.getChildren().addAll(loadXML, changeXSD, runChecker, openViewer);
-        row2.getChildren().addAll(changeXSD, runChecker);
-
-        row2.setAlignment(Pos.CENTER);
+        row.setAlignment(Pos.CENTER);
 
 
         xsd.setSpacing(10);
         xsd.getChildren().addAll(currentXSD, xsdFileName);
 
-        xml.setSpacing(10);
-        xml.getChildren().addAll(currentXML, xmlFileName);
 
         layout.setSpacing(15);
         layout.setPadding(new Insets(10,10,10,10));
-        //layout.getChildren().addAll(instruction, row2, xsd, xml, textArea);
-        layout.getChildren().addAll(instruction, row2, xsd, textArea);
+        layout.getChildren().addAll(instruction, row, xsd, textArea);
 
 
 
-
-
-        //Handlers
-        officeCoord.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if(checkHelper.getOfficeCoord()=="0"){
-                    checkHelper.setOfficeCoord("1");
-
-                }
-                else {
-                    checkHelper.setOfficeCoord("0");
-                }
-                ViewerManager.isWorking();
-                checkHelper.writeData();
-            }
-        });
-
-        loadXML.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                fileOpener.xmlOpener(popupwindow);
-                if(fileOpener.getXmlFile() != null){
-                    xmlFileName.setText(fileOpener.getXmlPath());
-                    runChecker.setDisable(false);
-
-                }
-
-
-
-            }
-        });
 
         changeXSD.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 fileOpener.xsdOpener(popupwindow);
                 if(fileOpener.getXsdFile() != null){
-                    checkHelper.setXsdFileName(fileOpener.getXsdPath());
+
+                    ViewerManager.setXsdFilePath(fileOpener.getXsdFile().getPath());
                     checkHelper.writeData();
-                    xsdFileName.setText(checkHelper.getXsdFileName());
+                    xsdFileName.setText(ViewerManager.getXsdFilePath());
+                    runChecker.setDisable(false);
                 }
             }
         });
@@ -152,12 +98,9 @@ public class Checker {
         runChecker.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                String file1 = "note.xml";
-                String file2 = "test.xsd";
 
                 try {
-                    xmlValidator.initValidator(checkHelper.getXsdFileName(), ViewerManager.getXmlFilePath());
-                    System.out.println(checkHelper.getXsdFileName());
+                    xmlValidator.initValidator(ViewerManager.getXsdFilePath(), ViewerManager.getXmlFilePath());
                     textArea.setText(xmlValidator.getResults());
 
                 }
@@ -167,22 +110,6 @@ public class Checker {
 
             }
         });
-
-//        openViewer.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//                popupwindow.close();
-//            }
-//        });
-//
-//
-//
-//        popupwindow.setOnCloseRequest(new EventHandler<WindowEvent>() {
-//            public void handle(WindowEvent we) {
-//                System.exit(0);
-//            }
-//        });
-
 
 
         popupwindow.initModality(Modality.APPLICATION_MODAL);

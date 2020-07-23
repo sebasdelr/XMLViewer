@@ -69,7 +69,6 @@ public class MenuPanel {
                     if(xmlTreeHelper.isFileLoaded()){
                         ViewerManager.setTreeItem(xmlTreeHelper.getTreeRootItem());
                         ViewerManager.setXmlFile(fileOpener.getXmlFile());
-                        ViewerManager.setXmlFileName(fileOpener.getXmlPath());
                         menuFileChecker.setDisable(false);
                     }
 

@@ -3,7 +3,6 @@ package sample.xmlviewer.main;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import sample.xmlviewer.data.ViewerManager;
 
 public class FooterPanel {
 
